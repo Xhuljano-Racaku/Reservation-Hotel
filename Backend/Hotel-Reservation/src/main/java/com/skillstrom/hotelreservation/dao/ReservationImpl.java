@@ -18,10 +18,14 @@ public class ReservationImpl implements ReservationDAO{
 
     @Override
     public Reservation create(Reservation reservation) {
-        String sql = "Inset Into " +
-                "reservation (roomNum, startDate, endDate, customerId) " +
+        String sql = "Insert Into reservation (roomNum,startDate,endDate,customerId) " +
                 "Values (?,?,?,?)";
-        return null;
+        System.out.println(jdbcTemplate.update(sql, reservation.getRoomNum(),reservation.getStartDate(), reservation.getEndDate(),reservation.getCustomerId()));
+        return reservation;
+//        Integer id = jdbcTemplate.queryForObject(sql, Integer.class, reservation.getRoomNum(),
+//                reservation.getStartDate(), reservation.getEndDate(),reservation.getCustomerId());
+//        reservation.setId(id);
+//        return reservation;
     }
 
     @Override
@@ -33,12 +37,17 @@ public class ReservationImpl implements ReservationDAO{
             Reservation reservation = mapRowToReservation(results);
             allReservations.add(reservation);
         }
-
         return allReservations;
     }
 
     @Override
     public Reservation findById(int reservationId) {
+        String sql = "Select * From reservation Where reservationId = " + reservationId;
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+        if(result.next()){
+            Reservation reservation = mapRowToReservation(result);
+            return reservation;
+        }
         return null;
     }
 
