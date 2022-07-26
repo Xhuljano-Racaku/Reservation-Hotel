@@ -3,11 +3,11 @@ package com.skillstrom.hotelreservation.beans;
 import java.util.Date;
 
 public class Reservation {
-    public int id;
-    public int roomNum;
-    public Date startDate;
-    public Date endDate;
-    public int customerId;
+    private int id;
+    private int roomNum;
+    private Date startDate;
+    private Date endDate;
+    private int customerId;
 
     public Reservation() {
     }
