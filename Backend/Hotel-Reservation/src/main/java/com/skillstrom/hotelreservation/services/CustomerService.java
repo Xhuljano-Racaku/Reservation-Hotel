@@ -26,4 +26,12 @@ public class CustomerService {
 	public Customer save(Customer customer) {
 		return repository.save(customer);
 	}
+	
+	public Customer update(Customer customer) {
+		return repository.save(customer);
+	}
+	
+	public void delete(Customer customer) {
+		 repository.delete(customer);
+	}
 }
