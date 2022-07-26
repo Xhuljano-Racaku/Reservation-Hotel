@@ -1,10 +1,25 @@
 package com.skillstrom.hotelreservation.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "room")
 public class Room {
 	
+	@Id
+	@Column(name = "room_num")
 	private int roomNum;
+	
+	@Column(name = "beds")
 	private int beds;
+	
+	@Column(name = "tier")
 	private String tier;
+	
+	@Column(name = "price")
 	private double price;
 	
 	public Room() {
