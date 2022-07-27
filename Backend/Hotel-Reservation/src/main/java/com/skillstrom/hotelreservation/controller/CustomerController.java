@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstrom.hotelreservation.beans.Customer;
@@ -38,10 +39,15 @@ public class CustomerController {
 		return new ResponseEntity<List<Customer>>(service.findAll(), HttpStatus.OK);
 	}
 	
-	@GetMapping("{id}")
+	@GetMapping("/id/{id}")
     public ResponseEntity<Customer> findById(@PathVariable int id){
         return new ResponseEntity<Customer>(service.findById(id),HttpStatus.OK);
     }
+	
+	@GetMapping("/name/{name}")
+	public ResponseEntity<List<Customer>> findByName(@PathVariable String name) {
+		return new ResponseEntity<List<Customer>>(service.findByName(name), HttpStatus.OK);
+	}
 	
 	@PostMapping
 	public ResponseEntity<Customer> save(@Valid @RequestBody Customer customer) {
