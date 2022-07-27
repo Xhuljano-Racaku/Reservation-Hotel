@@ -1,14 +1,12 @@
 package com.skillstrom.hotelreservation.services;
 
 import com.skillstrom.hotelreservation.beans.Reservation;
-import com.skillstrom.hotelreservation.beans.Room;
 import com.skillstrom.hotelreservation.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class ReservationService {
@@ -36,5 +34,8 @@ public class ReservationService {
         repository.delete(reservation);
     }
     
+    public List<Reservation> findByCustomer(int id){
+    	return repository.findByCustomer(id);
+    }
     
 }

@@ -42,4 +42,9 @@ public class ReservationController {
         service.delete(reservation);
     }
 
+    @GetMapping("customer/{id}")
+    public ResponseEntity<List<Reservation>> findByCustomer(@PathVariable(value = "id") int id){
+        return new ResponseEntity<List<Reservation>>(service.findByCustomer(id), HttpStatus.OK);
+    }
+
 }
