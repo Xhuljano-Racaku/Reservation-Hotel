@@ -29,6 +29,7 @@ public class Customer {
 	private String lastName;
 	
 	@Column(name="phone")
+	@NotBlank
 	private String phone;
 
 	@Override
