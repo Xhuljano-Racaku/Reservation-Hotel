@@ -49,6 +49,11 @@ public class CustomerController {
 		return new ResponseEntity<List<Customer>>(service.findByName(name), HttpStatus.OK);
 	}
 	
+	@GetMapping("/phone/{phone}")
+	public ResponseEntity<Customer> findByPhone(@PathVariable String phone) {
+		return new ResponseEntity<Customer>(service.findByPhone(phone), HttpStatus.OK);
+	}
+	
 	@PostMapping
 	public ResponseEntity<Customer> save(@Valid @RequestBody Customer customer) {
 		System.out.println("POST called");

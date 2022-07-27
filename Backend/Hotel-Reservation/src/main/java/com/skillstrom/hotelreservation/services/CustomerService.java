@@ -34,6 +34,10 @@ public class CustomerService {
 		return repository.findByName(firstName);
 	}
 	
+	public Customer findByPhone(String phone) {
+		return repository.findByPhone(phone);
+	}
+	
 	public Customer save(Customer customer) {
 		return repository.save(customer);
 	}
