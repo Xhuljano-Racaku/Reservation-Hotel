@@ -17,7 +17,7 @@ public class Customer {
 	
 	@Id
 	@Column(name="customer_id")
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int customerId;
 	
 	@Column(name="first_name")
@@ -31,11 +31,7 @@ public class Customer {
 	@Column(name="phone")
 	private String phone;
 	
-	@Column(name="reservation_id")
-	@OneToMany(mappedBy = "customer")
-	private Set<Customer> customers;
-	
-	
+
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName + ", phone="
@@ -46,23 +42,19 @@ public class Customer {
 		super();
 	}
 	
-	
-	
-	public Customer(int customerId, String firstName, String lastName, String phone, Set<Customer> customers) {
+	public Customer(int customerId, String firstName, String lastName, String phone) {
 		super();
 		this.customerId = customerId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phone = phone;
-		this.customers = customers;
 	}
 
-	public Customer(String firstName, String lastName, String phone, Set<Customer> customers) {
+	public Customer(String firstName, String lastName, String phone) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phone = phone;
-		this.customers = customers;
 	}
 
 	public int getCustomerId() {
@@ -95,14 +87,6 @@ public class Customer {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	public Set<Customer> getCustomers() {
-		return customers;
-	}
-
-	public void setCustomers(Set<Customer> customers) {
-		this.customers = customers;
 	}
 
 	@Override

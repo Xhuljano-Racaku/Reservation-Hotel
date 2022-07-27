@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skillstrom.hotelreservation.beans.Customer;
+import com.skillstrom.hotelreservation.beans.Reservation;
 import com.skillstrom.hotelreservation.repository.CustomerRepository;
 
 @Service
@@ -22,6 +23,10 @@ public class CustomerService {
 	public List<Customer> findAll() {
 		return repository.findAll();
 	}
+	
+	public Customer findById(int reservationId){
+        return repository.findById(reservationId).get();
+    }
 	
 	public Customer save(Customer customer) {
 		return repository.save(customer);
