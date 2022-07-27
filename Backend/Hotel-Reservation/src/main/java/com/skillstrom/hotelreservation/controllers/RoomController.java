@@ -16,23 +16,23 @@ import com.skillstrom.hotelreservation.beans.Room;
 import com.skillstrom.hotelreservation.services.RoomService;
 
 @RestController
-@RequestMapping("/room")
+@RequestMapping("/rooms")
 public class RoomController {
 
 	@Autowired
 	private RoomService service;
 	
-//	@GetMapping("/{bottom}_{top}")
-//	public ResponseEntity<List<Room>> findByPrice(@PathVariable(value = "top") double top, @PathVariable(value ="bottom") double bottom) {
-//		ResponseEntity<List<Room>> response = new ResponseEntity<>(service.findByPrice(bottom, top), HttpStatus.OK);
-//		return response;
-//	}
-//	
-//	@GetMapping("/{tier}")
-//	public ResponseEntity<List<Room>> findByTier(@PathVariable(value ="tier") String tier){
-//		ResponseEntity<List<Room>> response = new ResponseEntity<>(service.findByTier(tier), HttpStatus.OK);
-//		return response;
-//	}
+	@GetMapping("/price/{bottom}_{top}")
+	public ResponseEntity<List<Room>> findByPrice(@PathVariable(value = "top") double top, @PathVariable(value ="bottom") double bottom) {
+		ResponseEntity<List<Room>> response = new ResponseEntity<>(service.findByPrice(bottom, top), HttpStatus.OK);
+		return response;
+	}
+	
+	@GetMapping("/tier/{tier}")
+	public ResponseEntity<List<Room>> findByTier(@PathVariable(value ="tier") String tier){
+		ResponseEntity<List<Room>> response = new ResponseEntity<>(service.findByTier(tier), HttpStatus.OK);
+		return response;
+	}
 	
 	@PutMapping()
 	public ResponseEntity<Room> update(@RequestBody Room room) {

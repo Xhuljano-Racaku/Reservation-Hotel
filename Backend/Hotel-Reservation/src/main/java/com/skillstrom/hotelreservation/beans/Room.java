@@ -1,11 +1,13 @@
 package com.skillstrom.hotelreservation.beans;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name = "room")
 @Table(name = "room")
 public class Room {
 	
@@ -22,6 +24,9 @@ public class Room {
 	@Column(name = "price")
 	private double price;
 	
+//	@OneToMany(mappedBy = "room")
+//	private Set<Reservation> reservations;
+	
 	public Room() {
 	}
 	
@@ -32,7 +37,7 @@ public class Room {
 		this.tier = tier;
 		this.price = price;
 	}
-
+	
 	public int getRoomNum() {
 		return roomNum;
 	}
