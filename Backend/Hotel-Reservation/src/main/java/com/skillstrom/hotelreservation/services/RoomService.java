@@ -29,4 +29,11 @@ public class RoomService {
 		return repository.save(room);
 	}
 	
+	public List<Room> findRoomByAvailability(String startDate, String endDate){
+    	return repository.findRoomByAvailability(startDate, endDate);
+    }
+	
+	public List<Room> findByBeds(int beds){
+		return repository.findByBeds(beds);
+	}
 }

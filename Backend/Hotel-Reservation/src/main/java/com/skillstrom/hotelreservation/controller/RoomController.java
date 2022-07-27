@@ -1,4 +1,4 @@
-package com.skillstrom.hotelreservation.controllers;
+package com.skillstrom.hotelreservation.controller;
 
 import java.util.List;
 
@@ -34,10 +34,21 @@ public class RoomController {
 		return response;
 	}
 	
+	@GetMapping("/beds/{numBeds}")
+	public ResponseEntity<List<Room>> findByBeds(@PathVariable(value ="numBeds") int beds){
+		ResponseEntity<List<Room>> response = new ResponseEntity<>(service.findByBeds(beds), HttpStatus.OK);
+		return response;
+	}
+	
 	@PutMapping()
 	public ResponseEntity<Room> update(@RequestBody Room room) {
 		ResponseEntity<Room> response = new ResponseEntity<>(service.save(room), HttpStatus.CREATED);
 		return response;
 	}
 	
+	@GetMapping("/available/{startDate}_{endDate}")
+	public ResponseEntity<List<Room>> findByAvailability(@PathVariable(value = "startDate") String startDate, @PathVariable(value = "endDate") String endDate) {
+		ResponseEntity<List<Room>> response = new ResponseEntity<>(service.findRoomByAvailability(startDate, endDate), HttpStatus.OK);
+		return response;
+	}
 }
