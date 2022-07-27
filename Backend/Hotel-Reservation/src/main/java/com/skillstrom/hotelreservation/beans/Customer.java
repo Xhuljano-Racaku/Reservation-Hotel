@@ -1,11 +1,15 @@
 package com.skillstrom.hotelreservation.beans;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name= "customer")
@@ -17,14 +21,19 @@ public class Customer {
 	private int customerId;
 	
 	@Column(name="first_name")
+	@NotBlank
 	private String firstName;
 	
 	@Column(name="last_name")
+	@NotBlank
 	private String lastName;
 	
 	@Column(name="phone")
 	private String phone;
 	
+	@Column(name="reservation_id")
+	@OneToMany(mappedBy = "customer")
+	private Set<Customer> customers;
 	
 	
 	@Override
@@ -36,12 +45,24 @@ public class Customer {
 	public Customer() {
 		super();
 	}
+	
+	
+	
+	public Customer(int customerId, String firstName, String lastName, String phone, Set<Customer> customers) {
+		super();
+		this.customerId = customerId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phone = phone;
+		this.customers = customers;
+	}
 
-	public Customer(String firstName, String lastName, String phone) {
+	public Customer(String firstName, String lastName, String phone, Set<Customer> customers) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phone = phone;
+		this.customers = customers;
 	}
 
 	public int getCustomerId() {
@@ -75,4 +96,36 @@ public class Customer {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
+	public Set<Customer> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(Set<Customer> customers) {
+		this.customers = customers;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + customerId;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Customer other = (Customer) obj;
+		if (customerId != other.customerId)
+			return false;
+		return true;
+	}
+	
+	
 }
