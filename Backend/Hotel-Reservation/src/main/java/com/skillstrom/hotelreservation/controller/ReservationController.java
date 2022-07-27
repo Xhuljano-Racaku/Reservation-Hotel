@@ -22,6 +22,11 @@ public class ReservationController {
         return new ResponseEntity<List<Reservation>>(service.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<Reservation> findById(@PathVariable int id){
+        return new ResponseEntity<Reservation>(service.findById(id),HttpStatus.OK);
+    }
+
     @PostMapping("")
     public ResponseEntity<Reservation> save(@RequestBody Reservation reservation){
         return new ResponseEntity<>(service.save(reservation),HttpStatus.NO_CONTENT);
