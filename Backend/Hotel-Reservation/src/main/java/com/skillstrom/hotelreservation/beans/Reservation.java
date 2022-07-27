@@ -1,12 +1,24 @@
 package com.skillstrom.hotelreservation.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
+@Entity
+@Table(name= "reservation")
 public class Reservation {
-    private int id;
+    @Id
+    @Column(name="reservation_id")
+    private int reservationId;
+    @Column(name="room_num")
     private int roomNum;
+    @Column(name="start_date")
     private Date startDate;
+    @Column(name="end_date")
     private Date endDate;
+    @Column(name="customer_id")
     private int customerId;
 
     public Reservation() {
@@ -19,20 +31,20 @@ public class Reservation {
         this.customerId = customerId;
     }
 
-    public Reservation(int id, int roomNum, Date startDate, Date endDate, int customerId) {
-        this.id = id;
+    public Reservation(int reservationId, int roomNum, Date startDate, Date endDate, int customerId) {
+        this.reservationId = reservationId;
         this.roomNum = roomNum;
         this.startDate = startDate;
         this.endDate = endDate;
         this.customerId = customerId;
     }
 
-    public int getId() {
-        return id;
+    public int getReservationId() {
+        return reservationId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setReservationId(int id) {
+        this.reservationId = id;
     }
 
     public int getRoomNum() {
@@ -70,7 +82,7 @@ public class Reservation {
     @Override
     public String toString() {
         return "Reservation{" +
-                "id=" + id +
+                "id=" + reservationId +
                 ", roomNum=" + roomNum +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +

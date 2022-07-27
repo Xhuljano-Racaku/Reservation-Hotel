@@ -1,8 +1,10 @@
 package com.skillstrom.hotelreservation.controller;
 
 import com.skillstrom.hotelreservation.beans.Reservation;
-import com.skillstrom.hotelreservation.dao.ReservationDAO;
+import com.skillstrom.hotelreservation.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,18 +15,11 @@ import java.util.List;
 public class ReservationController {
 
     @Autowired
-    private ReservationDAO reservationDAO;
+    ReservationService service;
 
     @GetMapping("")
-    public List<Reservation> findAll(){
-        return reservationDAO.findAll();
+    public ResponseEntity<List<Reservation>> findAll(){
+        return new ResponseEntity<List<Reservation>>(service.findAll(), HttpStatus.OK);
     }
 
-    // need to test below this point
-    //
-
-    @PostMapping("")
-    public Reservation create(@RequestBody Reservation reservation){
-        return reservationDAO.create(reservation);
-    }
 }
