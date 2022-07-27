@@ -22,4 +22,19 @@ public class ReservationController {
         return new ResponseEntity<List<Reservation>>(service.findAll(), HttpStatus.OK);
     }
 
+    @PostMapping("")
+    public ResponseEntity<Reservation> save(@RequestBody Reservation reservation){
+        return new ResponseEntity<>(service.save(reservation),HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping("")
+    public ResponseEntity<Reservation> update (@RequestBody Reservation reservation){
+        return new ResponseEntity<Reservation>(service.update(reservation),HttpStatus.NO_CONTENT);
+    }
+
+    @DeleteMapping("")
+    public void delete (@RequestBody Reservation reservation){
+        service.delete(reservation);
+    }
+
 }
