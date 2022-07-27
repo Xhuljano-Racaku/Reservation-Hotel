@@ -1,0 +1,45 @@
+<div>
+  <h1>Search for available rooms</h1>
+  <ng-form>
+
+    <div>
+      <label for="tier">Tier: </label>
+      <select name="tier" id="tier">
+        <option value="executiveSuite">Executive Suite</option>
+        <option value="juniorSuite">Junior Suite</option>
+        <option value="presidentialSuite">Presidential Suite</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="startDate">Start Date: </label>
+      <input type="date" id="startDate" name="startDate">
+    </div>
+
+    <div>
+      <label for="endDate">End Date: </label>
+      <input type="date" id="endDate" name="endDate">
+    </div>
+
+    <div>
+      <label for="numberOfBeds">Number of Beds: </label>
+      <select name="numberOfBeds" id="numberOfBeds">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+  </div>
+
+    <div>
+    <label for="minPrice">Min Price: </label>
+      <input type="number" id="minPrice" name="minPrice">
+    </div>
+
+    <div>
+      <label for="maxPrice">Max Price: </label>
+      <input type="number" id="maxPrice" name="maxPrice">
+    </div>
+
+  </ng-form>
+</div>
