@@ -66,3 +66,26 @@ td:hover {
   background-color: #2d3042;
   font-weight: bold;
 }
+
+select {
+  background-color: #484a56;
+}
+input{
+  background-color: #484a56;
+}
+.submitButton{
+  background-color: #484a56;
+  padding: 2px;
+
+
+}
+.submitButton:hover {
+  background-color: #808083;
+  cursor: pointer;
+  color: black;
+}
+.roomCardContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

@@ -11,6 +11,7 @@ import { RoomCardComponent } from './room-card/room-card.component';
 import { ReservationTableComponent } from './reservation-table/reservation-table.component';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

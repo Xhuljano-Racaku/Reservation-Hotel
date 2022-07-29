@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  display: boolean = false
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  // goToReservationDisplay(){
+  //   this.router.navigate(['reservation-table'])
+  // }
+
+  show(){
+    if(this.display == false) this.display = true
+    else this.display = false
+  }
 }

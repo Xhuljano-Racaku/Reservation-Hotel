@@ -1,4 +1,13 @@
 <div>
+  <form (ngSubmit)="search()">
+      <label for="id">Customer ID: </label>
+      <input [(ngModel)]="id" name="id" type="number" value="0">
+    <button class="submitButton" type="submit" name="Submit">Submit</button>
+
+  </form>
+</div>
+
+<div>
   <h1>Reservations Table</h1>
   <table class="reservationTable">
     <thead>
@@ -14,8 +23,8 @@
     <tr *ngFor="let reservation of reservations">
       <td>{{reservation.reservationId}}</td>
       <td>{{reservation.roomNum}}</td>
-      <td>{{reservation.startDate}}</td>
-      <td>{{reservation.endDate}}</td>
+      <td>{{reservation.startDate | date}}</td>
+      <td>{{reservation.endDate | date}}</td>
       <td>{{reservation.customerId}}</td>
     </tr>
     </tbody>

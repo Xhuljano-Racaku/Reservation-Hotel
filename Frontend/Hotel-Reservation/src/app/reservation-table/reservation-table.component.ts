@@ -11,17 +11,20 @@ export class ReservationTableComponent implements OnInit {
 
   reservationApiService :ReservationApiService;
   reservations :Array<Reservation> = [];
+  id: number = 0
 
   constructor(reservationApiService :ReservationApiService) {
     this.reservationApiService = reservationApiService;
   }
 
   ngOnInit(): void {
-    this.reservationApiService.findByCustomerId(1).subscribe(resp => {
+    
+  }
+
+  search(){
+    this.reservationApiService.findByCustomerId(this.id).subscribe(resp => {
       this.reservations = [];
       this.reservations = resp;
     })
-
   }
-
 }

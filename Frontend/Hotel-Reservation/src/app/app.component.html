@@ -1,15 +1,19 @@
 <app-header></app-header>
-<br>
-<br>
-<div class="imageContainer">
-  <img class="hotelImg" src="https://images.pexels.com/photos/11335748/pexels-photo-11335748.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+
+<div id="main-app">
+    <br>
+  <br>
+  <div class="imageContainer">
+    <img class="hotelImg" src="https://images.pexels.com/photos/11335748/pexels-photo-11335748.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+  </div>
+  <br>
+  <div>
+    <app-search [searchedRooms]="allRooms"></app-search>
+  </div>
+  <br>
+  <br>
+  <br><app-customer-form></app-customer-form>
 </div>
-<br>
-<div>
-  <app-search [searchedRooms]="allRooms"></app-search>
-</div>
-<br>
-<br>
-<br><app-customer-form></app-customer-form>
+
 <!-- removed reservation table from the front page till we figure out where it goes -->
 <!--<app-reservation-table></app-reservation-table>-->
