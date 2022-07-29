@@ -9,6 +9,8 @@ import { SearchComponent } from './search/search.component';
 import {FormsModule} from "@angular/forms";
 import { RoomCardComponent } from './room-card/room-card.component';
 import { ReservationTableComponent } from './reservation-table/reservation-table.component';
+import { CustomerFormComponent } from './customer-form/customer-form.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { ReservationTableComponent } from './reservation-table/reservation-table
     HeaderComponent,
     SearchComponent,
     RoomCardComponent,
-    ReservationTableComponent
+    ReservationTableComponent,
+    CustomerFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
