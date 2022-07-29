@@ -1,9 +1,17 @@
 .hotelImg{
+  overflow: hidden;
+  position: relative;
   width: 100%;
-  height: 100%;
+  top: -150px;
+  /*left: -100px;*/
 }
 
 .imageContainer{
   padding-right: 5%;
   padding-left: 5%;
+  width: 100%;
+  height: 800px;
+  overflow: hidden;
+  /*border: 1px solid red;*/
+  display: block;
 }
