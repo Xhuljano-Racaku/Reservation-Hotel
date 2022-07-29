@@ -1,14 +1,16 @@
 <div>
   <div class="roomCardContainer">
-    <div class="left">
-      <img class="hotelImg" src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+    <div class="topPart">
+        <img class="hotelImg" src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+      <div class="center">
+        <h1>Room number: {{room.roomNumber}}</h1>
+        <h2>Tier: {{room.tier}}</h2>
+        <h3>Number of Beds: {{room.numOfBeds}}</h3>
+      </div>
     </div>
-    <div class="center">
-      <h1>Room number: </h1>
-      <p>Tier: </p>
-      <p>***** 4.4 100 Reviews</p>
+    <div class="bottomPart">
+      <div>Price: {{room.price}}/Night</div>
+      <div><button>Reservation</button></div>
     </div>
-    <div class="right"></div>
-    <div class="bottom"></div>
   </div>
 </div>

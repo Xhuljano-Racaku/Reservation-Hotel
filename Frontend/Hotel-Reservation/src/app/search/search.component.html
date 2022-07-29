@@ -2,28 +2,30 @@
   <h1>Search for available rooms</h1>
   <ng-form>
 
-    <div>
+    <div class="form-group">
       <label for="tier">Tier: </label>
-      <select name="tier" id="tier">
+      <select [(ngModel)]="tier" name="tier" id="tier">
+        <option value=""></option>
         <option value="executiveSuite">Executive Suite</option>
         <option value="juniorSuite">Junior Suite</option>
         <option value="presidentialSuite">Presidential Suite</option>
       </select>
     </div>
 
-    <div>
+    <div class="form-group">
       <label for="startDate">Start Date: </label>
-      <input type="date" id="startDate" name="startDate">
+      <input [(ngModel)]="startDate" type="date" id="startDate" name="startDate">
     </div>
 
-    <div>
+    <div class="form-group">
       <label for="endDate">End Date: </label>
-      <input type="date" id="endDate" name="endDate">
+      <input [(ngModel)]="endDate" type="date" id="endDate" name="endDate">
     </div>
 
-    <div>
+    <div class="form-group">
       <label for="numberOfBeds">Number of Beds: </label>
-      <select name="numberOfBeds" id="numberOfBeds">
+      <select [(ngModel)]="numberOfBeds" name="numberOfBeds" id="numberOfBeds">
+        <option value=""></option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -31,15 +33,17 @@
       </select>
   </div>
 
-    <div>
+    <div class="form-group">
     <label for="minPrice">Min Price: </label>
-      <input type="number" id="minPrice" name="minPrice">
+      <input [(ngModel)]="minPrice" type="number" id="minPrice" name="minPrice" value="1">
     </div>
 
-    <div>
+    <div class="form-group">
       <label for="maxPrice">Max Price: </label>
-      <input type="number" id="maxPrice" name="maxPrice">
+      <input [(ngModel)]="maxPrice" type="number" id="maxPrice" name="maxPrice" value="0">
     </div>
+
+    <button class="submitButton">Submit </button>
 
   </ng-form>
 </div>

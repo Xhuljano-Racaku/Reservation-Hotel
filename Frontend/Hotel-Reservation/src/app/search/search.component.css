@@ -4,3 +4,7 @@ select {
 input{
   background-color: #484a56;
 }
+.submitButton{
+  background-color: #484a56;
+  padding: 2px;
+}
