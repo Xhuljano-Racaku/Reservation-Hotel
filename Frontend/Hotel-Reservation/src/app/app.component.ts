@@ -10,11 +10,14 @@ import { SearchComponent } from './search/search.component';
 })
 export class AppComponent implements OnInit {
   title = 'Hotel-Reservation';
+  roomApiService :RoomApiService;
+  allRooms :Array<Room> = [];
 
-  constructor() {
+  constructor(roomApiService :RoomApiService) {
+    this.roomApiService = roomApiService;
   }
 
   ngOnInit(): void {
-    
+    this.roomApiService.findAll().subscribe(resp => this.allRooms = resp);
   }
 }
