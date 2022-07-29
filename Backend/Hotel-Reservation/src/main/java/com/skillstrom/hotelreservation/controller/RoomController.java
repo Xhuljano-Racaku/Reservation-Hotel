@@ -53,5 +53,12 @@ public class RoomController {
 		ResponseEntity<List<Room>> response = new ResponseEntity<>(service.findRoomByAvailability(startDate, endDate), HttpStatus.OK);
 		return response;
 	}
+
+	@GetMapping()
+	public ResponseEntity<List<Room>> findAll(){
+		ResponseEntity<List<Room>> response = new ResponseEntity<>(service.findAll(),HttpStatus.OK);
+		return response;
+	}
+
 }
 

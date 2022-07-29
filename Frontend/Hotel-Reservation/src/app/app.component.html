@@ -2,14 +2,18 @@
 <br>
 <br>
 <div class="imageContainer">
-<img class="hotelImg" src="https://images.pexels.com/photos/11335748/pexels-photo-11335748.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+  <img class="hotelImg" src="https://images.pexels.com/photos/11335748/pexels-photo-11335748.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
 </div>
 <br>
 <app-search></app-search>
 <br>
 <br>
 <br>
-<app-room-card></app-room-card>
+<div class="roomCardContainer">
+  <div *ngFor="let room of allRooms">
+    <app-room-card [room]="room"></app-room-card>
+  </div>
+</div>
 <br>
 <br>
 <br>

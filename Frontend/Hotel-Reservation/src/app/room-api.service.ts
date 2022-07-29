@@ -10,8 +10,12 @@ export class RoomApiService {
   http: HttpClient
   baseUrl: string = "http://localhost:8080/rooms"
 
-  constructor(http: HttpClient) { 
+  constructor(http: HttpClient) {
     this.http = http
+  }
+
+  findAll(): Observable<any>{
+    return this.http.get(`${this.baseUrl}`).pipe(catchError(this.handleError))
   }
 
   findByPrice(bottom: number, top: number): Observable<any>{
@@ -26,14 +30,14 @@ export class RoomApiService {
     return this.http.get(`${this.baseUrl}/beds/${beds}`).pipe(catchError(this.handleError))
   }
 
-  findByAvailablity(start: string, end: string): Observable<any>{
+  findByAvailability(start: string, end: string): Observable<any>{
     return this.http.get(`${this.baseUrl}/available/${start}_${end}`).pipe(catchError(this.handleError))
   }
 
   private handleError(error: HttpErrorResponse){
     console.log(error)
     return throwError(() => {
-      throw new Error() 
+      throw new Error()
     })
   }
 }

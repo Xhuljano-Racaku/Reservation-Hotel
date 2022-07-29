@@ -16,7 +16,9 @@ public class RoomService {
 	
 	@Autowired // Automatically gives a RoomRepository
 	private RoomRepository repository;
-	
+
+	public List<Room> findAll(){return repository.findAll();}
+
 	public List<Room> findByTier(String tier) {
 		return repository.findByTier(tier);
 	}

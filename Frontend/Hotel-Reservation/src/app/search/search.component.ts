@@ -34,7 +34,7 @@ export class SearchComponent implements OnInit {
 
   search(){
 
-    this.roomApi.findByAvailablity(this.startDate.toString(), this.endDate.toString()).subscribe(resp => {
+    this.roomApi.findByAvailability(this.startDate.toString(), this.endDate.toString()).subscribe(resp => {
       this.roomsByAvailability = resp
     })
 
