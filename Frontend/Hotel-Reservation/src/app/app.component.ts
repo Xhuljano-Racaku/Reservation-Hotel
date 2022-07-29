@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Room} from "./model/Room";
 import {RoomApiService} from "./room-api.service";
+import { SearchComponent } from './search/search.component';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,11 @@ import {RoomApiService} from "./room-api.service";
 })
 export class AppComponent implements OnInit {
   title = 'Hotel-Reservation';
-  roomApiService :RoomApiService;
-  allRooms :Array<Room> = [];
 
-  constructor(roomApiService :RoomApiService) {
-    this.roomApiService = roomApiService;
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.roomApiService.findAll().subscribe(resp => this.allRooms = resp);
+    
   }
 }

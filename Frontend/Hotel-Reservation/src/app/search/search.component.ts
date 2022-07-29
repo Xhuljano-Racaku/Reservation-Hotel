@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Room } from '../model/Room';
 import { RoomApiService } from '../room-api.service';
 import {forkJoin} from "rxjs";
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-search',
@@ -21,8 +22,11 @@ export class SearchComponent implements OnInit {
   roomsByPrice: Array<Room> = []
   roomsByBeds: Array<Room> = []
   roomsByTier: Array<Room> = []
+  searchedRooms: Array<Room> = []
 
   roomApi: RoomApiService
+
+  @Output() sendRooms = new EventEmitter<Array<Room>>()
 
   constructor(roomApi: RoomApiService) {
     this.roomApi = roomApi
@@ -43,7 +47,7 @@ export class SearchComponent implements OnInit {
 
     forkJoin(call1, call2, call3, call4).subscribe(resp => {
 
-      let searchedRooms = resp[0].filter((a: { roomNum: any; }) => {
+      this.searchedRooms = resp[0].filter((a: { roomNum: any; }) => {
         return resp[1].some((bed: { roomNum: any; }) => bed.roomNum === a.roomNum)
       })
         .filter((ab: { roomNum: number; }) => {
@@ -53,9 +57,11 @@ export class SearchComponent implements OnInit {
           return resp[3].some((tier: { roomNum: number; }) => tier.roomNum === abp.roomNum)
         })
 
-      searchedRooms.forEach((room: any) => {
+      this.searchedRooms.forEach((room: any) => {
         console.log(room)
       })
     })
+
+    
   }
 }

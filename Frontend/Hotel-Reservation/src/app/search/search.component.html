@@ -47,3 +47,14 @@
 
   </form>
 </div>
+<br>
+<br>
+<br>
+<div class="roomCardContainer">
+  <div *ngFor="let room of searchedRooms">
+    <app-room-card [room]="room"></app-room-card>
+  </div>
+</div>
+<br>
+<br>
+<br>
