@@ -1,14 +1,14 @@
 <div>
   <h1>Search for available rooms</h1>
-  <ng-form>
+  <form (ngSubmit)="search()">
 
     <div class="form-group">
       <label for="tier">Tier: </label>
       <select [(ngModel)]="tier" name="tier" id="tier">
         <option value=""></option>
-        <option value="executiveSuite">Executive Suite</option>
-        <option value="juniorSuite">Junior Suite</option>
-        <option value="presidentialSuite">Presidential Suite</option>
+        <option value="executive">Executive</option>
+        <option value="junior">Junior</option>
+        <option value="presidential">Presidential</option>
       </select>
     </div>
 
@@ -43,7 +43,7 @@
       <input [(ngModel)]="maxPrice" type="number" id="maxPrice" name="maxPrice" value="0">
     </div>
 
-    <button class="submitButton" (click)="search()">Submit </button>
+    <button class="submitButton" type="submit" name="Submit">Submit</button>
 
-  </ng-form>
+  </form>
 </div>

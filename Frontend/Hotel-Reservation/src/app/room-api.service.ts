@@ -18,7 +18,7 @@ export class RoomApiService {
     return this.http.get(`${this.baseUrl}/price/${bottom}_${top}`).pipe(catchError(this.handleError))
   }
 
-  findByTier(tier: String): Observable<any>{
+  findByTier(tier: string): Observable<any>{
     return this.http.get(`${this.baseUrl}/tier/${tier}`).pipe(catchError(this.handleError))
   }
 

@@ -21,8 +21,6 @@ export class SearchComponent implements OnInit {
   roomsByBeds: Array<Room> = []
   roomsByTier: Array<Room> = []
 
-  searchedRooms: Array<Room> = []
-
   roomApi: RoomApiService
 
   constructor(roomApi: RoomApiService) {
@@ -33,7 +31,6 @@ export class SearchComponent implements OnInit {
   }
 
   search(){
-
     this.roomApi.findByAvailablity(this.startDate.toString(), this.endDate.toString()).subscribe(resp => {
       this.roomsByAvailability = resp
     })
@@ -50,11 +47,18 @@ export class SearchComponent implements OnInit {
       this.roomsByTier = resp
     })
 
-    this.searchedRooms = this.roomsByAvailability
-    .filter(x => this.roomsByBeds.includes(x))
-    .filter(x => this.roomsByPrice.includes(x))
-    .filter(x => this.roomsByTier.includes(x))
+    let searchedRooms = this.roomsByAvailability.filter(a => {
+      return this.roomsByBeds.some(bed => bed.roomNum === a.roomNum)
+    })
+    .filter(ab => {
+      return this.roomsByPrice.some(price => price.roomNum === ab.roomNum)
+    })
+    .filter(abp => {
+      return this.roomsByTier.some(tier => tier.roomNum === abp.roomNum)
+    })
 
+    searchedRooms.forEach(room => {
+      console.log(room)
+    })
   }
-
 }
