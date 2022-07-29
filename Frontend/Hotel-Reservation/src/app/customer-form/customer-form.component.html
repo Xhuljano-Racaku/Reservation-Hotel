@@ -1,4 +1,5 @@
 <form >
+   <h1>Your details</h1> 
     <div class="form-group">
         <label for="firstName">First Name*</label>
     <input
@@ -64,5 +65,19 @@ class="form-control">
       </div>
   </div>
 </div>
-    <button class="btn btn-primary">Submit</button>
+
+<div class="divButton">
+    <button 
+        class="btn btn-primary" 
+        type="submit" 
+        value="Save" 
+        [disabled]="!submitForm.valid"
+        [ngStyle]="{'background-color': submitForm.valid ? 'blue': 'gray'}">
+        Submit
+</button>
+    <button 
+        type="button" 
+        class="btn btn-danger" 
+        [routerLink]="'/'">Cancel</button>
+    </div>
 </form>

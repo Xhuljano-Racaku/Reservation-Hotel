@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CustomerApiService } from '../customer-api.service';
+import { Customer } from '../model/Customer';
 
 @Component({
   selector: 'app-customer-form',
@@ -10,7 +14,9 @@ export class CustomerFormComponent implements OnInit {
   log(x : any) {
     console.log(x);
   }
-  constructor() { }
+  submitForm: FormGroup = new FormGroup({});
+
+  constructor(private service: CustomerApiService, private router: Router) { }
 
   ngOnInit(): void {
   }
