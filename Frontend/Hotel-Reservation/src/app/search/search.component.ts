@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Room } from '../model/Room';
 import { RoomApiService } from '../room-api.service';
 import {forkJoin} from "rxjs";
@@ -22,11 +22,10 @@ export class SearchComponent implements OnInit {
   roomsByPrice: Array<Room> = []
   roomsByBeds: Array<Room> = []
   roomsByTier: Array<Room> = []
-  searchedRooms: Array<Room> = []
+  
+  @Input() searchedRooms: Array<Room> = []
 
   roomApi: RoomApiService
-
-  @Output() sendRooms = new EventEmitter<Array<Room>>()
 
   constructor(roomApi: RoomApiService) {
     this.roomApi = roomApi
