@@ -23,7 +23,7 @@ import com.skillstrom.hotelreservation.beans.Reservation;
 import com.skillstrom.hotelreservation.services.CustomerService;
 
 @RestController
-@RequestMapping("/hotelreservation/customers")
+@RequestMapping("/customers")
 public class CustomerController {
 	
 	@Autowired
@@ -67,8 +67,8 @@ public class CustomerController {
 	}
 	
 	@DeleteMapping
-	public void delete(@RequestBody Customer customer) {
+	public void delete(@PathVariable int id) {
 		System.out.println("DELETE called");
-		service.delete(customer);
+		service.delete(id);
 	}
 }
