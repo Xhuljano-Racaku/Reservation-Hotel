@@ -7,11 +7,16 @@ input{
 .submitButton{
   background-color: #484a56;
   padding: 2px;
-  
-  
+
+
 }
 .submitButton:hover {
   background-color: #808083;
   cursor: pointer;
   color: black;
+}
+.roomCardContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
