@@ -7,13 +7,15 @@ import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
 import {FormsModule} from "@angular/forms";
 import { RoomCardComponent } from './room-card/room-card.component';
+import { ReservationTableComponent } from './reservation-table/reservation-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SearchComponent,
-    RoomCardComponent
+    RoomCardComponent,
+    ReservationTableComponent
   ],
   imports: [
     BrowserModule,

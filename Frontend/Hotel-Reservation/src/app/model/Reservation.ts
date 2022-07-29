@@ -7,7 +7,7 @@ export class Reservation{
   customerId :number;
 
 
-  constructor(id: number, roomNumber: number, startDate: Date, endDate: Date, customerId: number) {
+  constructor(id: number = 0, roomNumber: number = 0, startDate: Date = new Date(), endDate: Date = new Date(), customerId: number = 0) {
     this.id = id;
     this.roomNumber = roomNumber;
     this.startDate = startDate;

@@ -1,0 +1,23 @@
+<div>
+  <h1>Reservations Table</h1>
+  <table class="reservationTable">
+    <thead>
+    <tr>
+      <th>Reservation ID</th>
+      <th>Room Number</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Costumer ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let reservation of reservations">
+      <td>{{reservation.id}}</td>
+      <td>{{reservation.roomNumber}}</td>
+      <td>{{reservation.startDate.toLocaleDateString()}}</td>
+      <td>{{reservation.endDate.toLocaleDateString()}}</td>
+      <td>{{reservation.customerId}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
