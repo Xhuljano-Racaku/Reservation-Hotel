@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Room } from '../model/Room';
 import { RoomApiService } from '../room-api.service';
+import {forkJoin} from "rxjs";
 
 @Component({
   selector: 'app-search',
@@ -30,37 +31,31 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  search(){
+  search() {
 
+    const call1 = this.roomApi.findByAvailability(this.startDate.toString(), this.endDate.toString())
 
-    this.roomApi.findByAvailability(this.startDate.toString(), this.endDate.toString()).subscribe(resp => {
-      this.roomsByAvailability = resp
-    })
+    const call2 = this.roomApi.findByBeds(this.numberOfBeds)
 
-    this.roomApi.findByBeds(this.numberOfBeds).subscribe(resp => {
-      this.roomsByBeds = resp
-    })
+    const call3 = this.roomApi.findByPrice(this.minPrice, this.maxPrice)
 
-    this.roomApi.findByPrice(this.minPrice, this.maxPrice).subscribe(resp => {
-      this.roomsByPrice = resp
-    })
+    const call4 = this.roomApi.findByTier(this.tier)
 
-    this.roomApi.findByTier(this.tier).subscribe(resp => {
-      this.roomsByTier = resp
-    })
+    forkJoin(call1, call2, call3, call4).subscribe(resp => {
 
-    let searchedRooms = this.roomsByAvailability.filter(a => {
-      return this.roomsByBeds.some(bed => bed.roomNum === a.roomNum)
-    })
-    .filter(ab => {
-      return this.roomsByPrice.some(price => price.roomNum === ab.roomNum)
-    })
-    .filter(abp => {
-      return this.roomsByTier.some(tier => tier.roomNum === abp.roomNum)
-    })
+      let searchedRooms = resp[0].filter((a: { roomNum: any; }) => {
+        return resp[1].some((bed: { roomNum: any; }) => bed.roomNum === a.roomNum)
+      })
+        .filter((ab: { roomNum: number; }) => {
+          return resp[2].some((price: { roomNum: number; }) => price.roomNum === ab.roomNum)
+        })
+        .filter((abp: { roomNum: number; }) => {
+          return resp[3].some((tier: { roomNum: number; }) => tier.roomNum === abp.roomNum)
+        })
 
-    searchedRooms.forEach(room => {
-      console.log(room)
+      searchedRooms.forEach((room: any) => {
+        console.log(room)
+      })
     })
   }
 }
