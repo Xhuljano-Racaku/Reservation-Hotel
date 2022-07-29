@@ -16,7 +16,7 @@ export class ReservationApiService {
    }
 
    findByCustomerId(id: number): Observable<any>{
-    return this.http.get(`${this.baseUrl}/customer/${id}`).pipe(catchError(this.handleError))
+    return this.http.get(`${this.baseUrl}customer/${id}`).pipe(catchError(this.handleError))
    }
 
    save(reservation: Reservation){
@@ -34,7 +34,7 @@ export class ReservationApiService {
    private handleError(error: HttpErrorResponse){
     console.log(error)
     return throwError(() => {
-      throw new Error() 
+      throw new Error()
     })
   }
 }

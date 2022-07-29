@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Reservation} from "../model/Reservation";
+import {ReservationApiService} from "../reservation-api.service";
 
 @Component({
   selector: 'app-reservation-table',
@@ -8,11 +9,19 @@ import {Reservation} from "../model/Reservation";
 })
 export class ReservationTableComponent implements OnInit {
 
+  reservationApiService :ReservationApiService;
   reservations :Array<Reservation> = [];
 
-  constructor() { }
+  constructor(reservationApiService :ReservationApiService) {
+    this.reservationApiService = reservationApiService;
+  }
 
   ngOnInit(): void {
+    this.reservationApiService.findByCustomerId(1).subscribe(resp => {
+      this.reservations = [];
+      this.reservations = resp;
+    })
+
   }
 
 }
