@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.skillstrom.hotelreservation.beans.Customer;
 import com.skillstrom.hotelreservation.beans.Reservation;
 import com.skillstrom.hotelreservation.services.CustomerService;

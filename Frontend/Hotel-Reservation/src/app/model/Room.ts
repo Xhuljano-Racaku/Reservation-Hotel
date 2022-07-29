@@ -1,13 +1,13 @@
 export class Room{
-  roomNumber :number;
-  numOfBeds :number;
+  roomNum :number;
+  beds :number;
   tier :string;
   price :number;
 
 //make sure that you have valid default values later
-  constructor(roomNumber: number = 0, numOfBeds: number = 0, tier: string = "", price: number = 0) {
-    this.roomNumber = roomNumber;
-    this.numOfBeds = numOfBeds;
+  constructor(roomNum: number = 0, beds: number = 0, tier: string = "", price: number = 0) {
+    this.roomNum = roomNum;
+    this.beds = beds;
     this.tier = tier;
     this.price = price;
   }

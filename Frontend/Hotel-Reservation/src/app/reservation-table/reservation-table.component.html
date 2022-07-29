@@ -12,10 +12,10 @@
     </thead>
     <tbody>
     <tr *ngFor="let reservation of reservations">
-      <td>{{reservation.id}}</td>
-      <td>{{reservation.roomNumber}}</td>
-      <td>{{reservation.startDate.toLocaleDateString()}}</td>
-      <td>{{reservation.endDate.toLocaleDateString()}}</td>
+      <td>{{reservation.reservationId}}</td>
+      <td>{{reservation.roomNum}}</td>
+      <td>{{reservation.startDate}}</td>
+      <td>{{reservation.endDate}}</td>
       <td>{{reservation.customerId}}</td>
     </tr>
     </tbody>
