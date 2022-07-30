@@ -12,6 +12,7 @@ import { ReservationTableComponent } from './reservation-table/reservation-table
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
+import { StrictNumberDirective } from './StrictNumberDirective';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RouterModule } from '@angular/router';
     SearchComponent,
     RoomCardComponent,
     ReservationTableComponent,
-    CustomerFormComponent
+    CustomerFormComponent,
+    StrictNumberDirective
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-<form >
+<form (ngSubmit)="save()">
    <h1>Your details</h1> 
     <div class="form-group">
         <label for="firstName">First Name*</label>
@@ -47,15 +47,17 @@
       </div>
 </div>
 <div class="form-group">
-    <label for="phone">Phone*</label>
+    <label for="phone">Phone Number*</label>
 <input
 required
+minlength="10"
 ngModel 
 name="phone" 
 #phone="ngModel" 
 (change)="log(phone)" 
 id="phone" 
-type="text" 
+type="text"
+NumberOnly
 class="form-control">
   <div 
   class="alert alert-danger" 
@@ -63,11 +65,15 @@ class="form-control">
       <div *ngIf="phone.errors?.['required']">
           Phone number is required
       </div>
+      <div *ngIf="phone.errors?.['minlength']">
+        At least {{phone.errors?.['minlength'].requiredLength}} digits. No special characters allowed
+      </div>
   </div>
 </div>
 
 <div class="divButton">
-    <button 
+    <button
+        id="submitButton" 
         class="btn btn-primary" 
         type="submit" 
         value="Save" 

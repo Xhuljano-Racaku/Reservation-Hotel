@@ -18,7 +18,22 @@ export class CustomerFormComponent implements OnInit {
 
   constructor(private service: CustomerApiService, private router: Router) { }
 
+  get firstName() {
+    return this.submitForm.get('firstName');
+    }
+  
+    get lastName() {
+    return this.submitForm.get('lastName');
+    }
+  
+    get phone() {
+    return this.submitForm.get('phone');
+    }
+
   ngOnInit(): void {
   }
 
+  save() : void {
+    this.service.save(this.submitForm.value).subscribe(() => {});
+  }
 }
