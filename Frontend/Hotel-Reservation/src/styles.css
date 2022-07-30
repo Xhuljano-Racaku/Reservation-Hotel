@@ -9,3 +9,20 @@
 body{
   background-color: #24252A;
 }
+
+nav {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 10px; 
+  background-color: rgb(255, 255, 255);
+  height: 30px;
+  box-shadow: 0 0 5px 0 black;
+}
+
+.home {
+  display: flex; 
+  justify-content: space-between;  
+  align-items: center; 
+  column-gap: 10px;
+}

@@ -49,3 +49,9 @@ img {
   color: #484a56;
 
 }
+
+#reserveButton:hover {
+  background-color: #808083;
+  cursor: pointer;
+  color: rgb(255, 254, 254);
+}

@@ -1,5 +1,6 @@
 <div>
-  <div class="roomCardContainer">
+  <div class="roomCardContainer" >
+    <!-- <app-search [searchedRooms]="allRooms"></app-search> -->
     <div class="topPart">
         <img class="hotelImg" src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
       <div class="center">
@@ -10,7 +11,10 @@
     </div>
     <div class="bottomPart">
       <div>Price: {{room.price}}/Night</div>
-      <div><button>Reservation</button></div>
+      <div><button id="reserveButton" class="button" (click)="goToPage('reserve')">Reservation</button></div>
+      <div>
+        <app-search [searchedRooms]="allRooms"></app-search>
+      </div>
     </div>
   </div>
 </div>
