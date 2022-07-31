@@ -2,7 +2,8 @@
   <img class="logo" src="https://images.pexels.com/photos/9011349/pexels-photo-9011349.jpeg" alt="logo">
   <nav>
     <ul class="nav_links">
-      <li><a href="#" (click)="goToReservationDisplay('reservation-table')">My Reservations</a></li>
+      <li><a [routerLink]="['/reservation-table']">My Reservations</a></li>
+      <!-- <li><button (click)="goToReservationDisplay()">My Reservations</button></li> -->
     </ul>
   </nav>
   <a class="cta" href="#"><button>Contact</button></a>
