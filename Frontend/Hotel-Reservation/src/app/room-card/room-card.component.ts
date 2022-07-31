@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {Room} from "../model/Room";
 import {Router} from '@angular/router'
 import { RoomApiService } from '../room-api.service';
+import { SearchComponent } from "../search/search.component"
 
 @Component({
   selector: 'app-room-card',
@@ -23,7 +24,8 @@ export class RoomCardComponent implements OnInit {
     this.router.navigate([`/reserve`])
   }
 
+
   ngOnInit(): void {
-    // this.roomApiService.findAll().subscribe(resp => this.allRooms = resp);
+    this.roomApiService.findAll().subscribe(resp => this.allRooms = resp);
   }
 }

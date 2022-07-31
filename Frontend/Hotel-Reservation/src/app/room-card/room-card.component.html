@@ -1,8 +1,10 @@
 <div>
+  <div class="imageContainer">
+    <img class="hotelImg" src="https://images.pexels.com/photos/11335748/pexels-photo-11335748.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+  </div>
   <div class="roomCardContainer" >
-    <!-- <app-search [searchedRooms]="allRooms"></app-search> -->
     <div class="topPart">
-        <img class="hotelImg" src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+        <img class="hotelImg1" src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
       <div class="center">
         <h1>Room number: {{room.roomNum}}</h1>
         <h2>Tier: {{room.tier}}</h2>
@@ -12,8 +14,9 @@
     <div class="bottomPart">
       <div>Price: {{room.price}}/Night</div>
       <div><button id="reserveButton" class="button" (click)="goToPage('reserve')">Reservation</button></div>
+      <br>
       <div>
-        <app-search [searchedRooms]="allRooms"></app-search>
+        <!-- <app-search [searchedRooms]="allRooms"></app-search> -->
       </div>
     </div>
   </div>
