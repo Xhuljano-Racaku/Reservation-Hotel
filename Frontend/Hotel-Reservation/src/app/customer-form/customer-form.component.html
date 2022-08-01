@@ -11,7 +11,9 @@
       (change)="log(firstName)" 
       id="firstName" 
       type="text" 
-      class="form-control">
+      class="form-control"
+      [(ngModel)]="customer.firstName">
+      
         <div 
         class="alert alert-danger" 
         *ngIf="firstName.touched && !firstName.valid">
@@ -29,12 +31,13 @@
     required
     minlength="3"
     ngModel 
-    name="firstName" 
+    name="lastName" 
     #lastName="ngModel" 
     (change)="log(lastName)" 
     id="lastName" 
     type="text" 
-    class="form-control">
+    class="form-control"
+    [(ngModel)]="customer.lastName">
       <div 
       class="alert alert-danger" 
       *ngIf="lastName.touched && !lastName.valid">
@@ -58,7 +61,8 @@ name="phone"
 id="phone" 
 type="text"
 NumberOnly
-class="form-control">
+class="form-control"
+[(ngModel)]="customer.phone">
   <div 
   class="alert alert-danger" 
   *ngIf="phone.touched && !phone.valid">

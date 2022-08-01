@@ -13,6 +13,7 @@ import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { StrictNumberDirective } from './StrictNumberDirective';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { StrictNumberDirective } from './StrictNumberDirective';
     RoomCardComponent,
     ReservationTableComponent,
     CustomerFormComponent,
-    StrictNumberDirective
+    StrictNumberDirective,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

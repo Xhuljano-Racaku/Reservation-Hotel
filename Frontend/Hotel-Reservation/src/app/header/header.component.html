@@ -2,10 +2,10 @@
   <img class="logo" src="https://images.pexels.com/photos/9011349/pexels-photo-9011349.jpeg" alt="logo">
   <nav>
     <ul class="nav_links">
-      <li><a href="#" (click)="show()">My Reservations</a></li>
+      <li><a [routerLink]="['/reservation-table']">My Reservations</a></li>
+      <li><a [routerLink]="['']">Search Rooms</a></li>
     </ul>
   </nav>
   <a class="cta" href="#"><button>Contact</button></a>
 </header>
-
-<app-reservation-table *ngIf="display ==true"></app-reservation-table>
+<!-- <app-reservation-table *ngIf="display ==true"></app-reservation-table> -->

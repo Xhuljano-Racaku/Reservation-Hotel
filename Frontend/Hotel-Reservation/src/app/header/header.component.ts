@@ -8,19 +8,19 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  display: boolean = false
+  // display: boolean = false
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  // goToReservationDisplay(){
+  // goToReservationDisplay(): void{
   //   this.router.navigate(['reservation-table'])
   // }
 
-  show(){
-    if(this.display == false) this.display = true
-    else this.display = false
-  }
+  // show(){
+  //   if(this.display == false) this.display = true
+  //   else this.display = false
+  // }
 }

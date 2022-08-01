@@ -12,6 +12,7 @@ export class ReservationTableComponent implements OnInit {
   reservationApiService :ReservationApiService;
   reservations :Array<Reservation> = [];
   id: number = 0
+  router: any;
 
   constructor(reservationApiService :ReservationApiService) {
     this.reservationApiService = reservationApiService;
