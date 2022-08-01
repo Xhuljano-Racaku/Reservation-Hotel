@@ -26,15 +26,15 @@ export class CustomerApiService {
     return this.http.get(`${this.baseUrl}/phone/${phone}`).pipe(catchError(this.handleError))
    }
 
-   save(customer: Customer){
+   save(customer: Customer): Observable<any>{
     return this.http.post(this.baseUrl, customer).pipe(catchError(this.handleError))
    }
 
-   update(customer: Customer){
+   update(customer: Customer): Observable<any>{
     return this.http.put(this.baseUrl, customer).pipe(catchError(this.handleError))
    }
 
-   delete(id: number){
+   delete(id: number): Observable<any>{
     return this.http.delete(`${this.baseUrl}/${id}`).pipe(catchError(this.handleError))
    }
 

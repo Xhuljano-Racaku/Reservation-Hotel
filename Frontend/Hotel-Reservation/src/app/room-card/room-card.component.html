@@ -13,7 +13,7 @@
     </div>
     <div class="bottomPart">
       <div>Price: {{room.price}}/Night</div>
-      <div><button id="reserveButton" class="button" (click)="goToPage('reserve')">Reservation</button></div>
+      <div><button id="reserveButton" class="button" [routerLink]="['/reserve']" [queryParams]="{roomNum:room.roomNum, startDate:startDate, endDate:endDate}">Reservation</button></div>
       <br>
       <div>
         <!-- <app-search [searchedRooms]="allRooms"></app-search> -->

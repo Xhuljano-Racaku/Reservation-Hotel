@@ -14,6 +14,9 @@ export class RoomCardComponent implements OnInit {
   roomApiService :RoomApiService;
   allRooms :Array<Room> = [];
 
+  @Input() startDate: Date = new Date()
+  @Input() endDate: Date = new Date()
+
   @Input() room :Room = new Room();
 
   constructor(roomApiService :RoomApiService, private router:Router) { 
