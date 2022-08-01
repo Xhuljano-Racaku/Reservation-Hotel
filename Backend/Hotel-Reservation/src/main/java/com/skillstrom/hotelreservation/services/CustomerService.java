@@ -39,7 +39,13 @@ public class CustomerService {
 	}
 	
 	public Customer save(Customer customer) {
-		return repository.save(customer);
+		Customer test = findByPhone(customer.getPhone());
+		System.out.println(test);
+		if(test == null) {
+			return repository.save(customer);
+		}else {
+			return test;
+		}	
 	}
 	
 	public Customer update(Customer customer) {

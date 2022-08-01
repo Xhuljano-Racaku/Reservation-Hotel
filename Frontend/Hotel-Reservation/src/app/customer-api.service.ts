@@ -23,7 +23,7 @@ export class CustomerApiService {
    }
 
    findByPhone(phone: string): Observable<any>{
-    return this.http.get(`${this.baseUrl}/phone/${phone}`).pipe(catchError(this.handleError))
+    return this.http.get(`${this.baseUrl}phone/${phone}`).pipe(catchError(this.handleError))
    }
 
    save(customer: Customer): Observable<any>{
