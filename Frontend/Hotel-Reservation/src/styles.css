@@ -11,18 +11,29 @@ body{
 }
 
 /* nav {
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  padding: 10px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
   background-color: rgb(255, 255, 255);
   height: 30px;
   box-shadow: 0 0 5px 0 black;
 } */
 
 .home {
-  display: flex; 
-  justify-content: space-between;  
-  align-items: center; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   column-gap: 10px;
+}
+
+
+.submitButton{
+  padding: 3px 9px;
+  background-color: #0088a9;
+}
+.submitButton:hover {
+  background-color: rgba(0,136,169,.8);
+  cursor: pointer;
+  color: black;
 }

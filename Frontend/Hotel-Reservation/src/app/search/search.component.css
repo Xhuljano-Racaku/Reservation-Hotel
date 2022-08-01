@@ -4,19 +4,78 @@ select {
 input{
   background-color: #484a56;
 }
-.submitButton{
-  background-color: #484a56;
-  padding: 2px;
 
-
-}
-.submitButton:hover {
-  background-color: #808083;
-  cursor: pointer;
-  color: black;
-}
 .roomCardContainer{
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
+.main {
+  display: flex;
+  justify-content: center;
+}
+.formContainer{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  /*background-color: #FB667A;*/
+  align-items: center;
+  position: center;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+section {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  justify-content: space-around;
+}
+
+
+select{
+  width: 300px;
+  margin-left: 10px;
+  height: 40px;
+  text-align: center;
+}
+
+input {
+  width: 300px;
+  margin-left: 10px;
+  height: 40px;
+  text-align: center;
+}
+
+.secondSection input{
+  width: 100px;
+}
+.secondSection select{
+  width: 120px;
+}
+
+.hotelImg{
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  top: -150px;
+}
+
+.imageContainer{
+  padding-right: 5%;
+  padding-left: 5%;
+  width: 100%;
+  height: 800px;
+  overflow: hidden;
+  display: block;
+}
+
+/*.form-group{*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*}*/

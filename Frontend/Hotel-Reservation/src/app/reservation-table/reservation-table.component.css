@@ -73,19 +73,18 @@ select {
 input{
   background-color: #484a56;
 }
-.submitButton{
-  background-color: #484a56;
-  padding: 2px;
 
 
-}
-.submitButton:hover {
-  background-color: #808083;
-  cursor: pointer;
-  color: black;
-}
 .roomCardContainer{
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+form{
+  padding-top: 20px;
+  display: flex;
+  gap: 20px;
+  width: 90%;
+  justify-content: end;
 }
