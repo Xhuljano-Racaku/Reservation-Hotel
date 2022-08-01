@@ -5,13 +5,14 @@ import { HeaderComponent } from './header/header.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ReservationTableComponent } from './reservation-table/reservation-table.component';
 import { RoomCardComponent } from './room-card/room-card.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [{
-  path: '', component: RoomCardComponent
+  path: '', component: SearchComponent
 },
  
 {
-    path: 'reservation-table', component: ReservationTableComponent
+  path: 'reservation-table', component: ReservationTableComponent
 },
 
 {

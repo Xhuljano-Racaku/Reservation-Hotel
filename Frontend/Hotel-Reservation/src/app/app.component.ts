@@ -14,6 +14,10 @@ export class AppComponent {
 
   }
 
+  showResTable(){
+
+  }
+
 }
 // import {Component, OnInit, ViewChild} from '@angular/core';
 // import {Room} from "./model/Room";

@@ -15,9 +15,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goToReservationDisplay(): void{
-    this.router.navigate(['reservation-table'])
-  }
+  // goToReservationDisplay(): void{
+  //   this.router.navigate(['reservation-table'])
+  // }
 
   // show(){
   //   if(this.display == false) this.display = true
