@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { CustomerApiService } from '../customer-api.service';
 import { Customer } from '../model/Customer';
 import { Reservation } from '../model/Reservation';
@@ -73,5 +74,7 @@ export class CustomerFormComponent implements OnInit {
         this.reservation = resp
       })
     });
+
+
   }
 }
