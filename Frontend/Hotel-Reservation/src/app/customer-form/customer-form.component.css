@@ -2,26 +2,26 @@
     border: 2px solid red;
 }
 form {
-
     display: flex;
-    flex-direction: column; 
-    row-gap: 10px; 
-    padding: 40px; 
-    width: 600px; 
-    border: 7px solid rgb(255, 255, 255); 
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 40px;
+    width: 600px;
+    border: 7px solid rgb(255, 255, 255);
     margin-top: 10px;
     box-shadow: 0 0 20px 0 black;
 }
+
 button {
     width: 120px;
-    text-align: center; 
+    text-align: center;
     display:flex;
     justify-content: center;
 }
 .divButton {
     display:flex;
     justify-content: space-around;
-    
+
 }
 #submitButton:disabled {
     cursor: default;

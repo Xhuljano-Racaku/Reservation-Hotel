@@ -67,6 +67,7 @@ input {
 }
 
 .imageContainer{
+  /*padding-top: 5%;*/
   padding-right: 5%;
   padding-left: 5%;
   width: 100%;

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { forkJoin } from 'rxjs';
 import { CustomerApiService } from '../customer-api.service';
 import { Customer } from '../model/Customer';
 import { Reservation } from '../model/Reservation';
@@ -26,7 +25,7 @@ export class CustomerFormComponent implements OnInit {
   // Saving the customer and reservation incase we want to display it to the user
   reservation: Reservation = new Reservation()
   customer: Customer = new Customer()
-  
+
 
 
   constructor(private service: CustomerApiService, private router: Router, private route: ActivatedRoute, private reservationApi: ReservationApiService) { }
@@ -34,11 +33,11 @@ export class CustomerFormComponent implements OnInit {
   get firstName() {
     return this.submitForm.get('firstName');
     }
-  
+
     get lastName() {
     return this.submitForm.get('lastName');
     }
-  
+
     get phone() {
     return this.submitForm.get('phone');
     }
@@ -56,7 +55,7 @@ export class CustomerFormComponent implements OnInit {
   }
 
   save() : void {
-    
+
     // Save the customer so we can generate the customer ID
     // We need to have a way to get customer ID of already existing customer
     this.service.save(this.customer).subscribe(resp => {
@@ -74,7 +73,5 @@ export class CustomerFormComponent implements OnInit {
         this.reservation = resp
       })
     });
-    
-    
   }
 }
