@@ -73,8 +73,12 @@ select {
 }
 input{
   background-color: #484a56;
+  text-align: center;
 }
 
+.searchContainer{
+  margin-top: 20px;
+}
 
 .roomCardContainer{
   display: flex;
