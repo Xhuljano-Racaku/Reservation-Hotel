@@ -29,10 +29,8 @@ public class ReservationService {
     public Reservation update(Reservation reservation){
         return repository.save(reservation);
     }
-    
-    public void delete(Reservation reservation){
-        repository.delete(reservation);
-    }
+
+    public void delete(int id){repository.deleteById(id);}
     
     public List<Reservation> findByCustomer(int id){
     	return repository.findByCustomer(id);

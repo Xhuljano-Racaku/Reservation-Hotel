@@ -54,6 +54,5 @@ public class CustomerService {
 	
 	public void delete(int id) {
 		 repository.deleteById(id);
-		 
 	}
 }

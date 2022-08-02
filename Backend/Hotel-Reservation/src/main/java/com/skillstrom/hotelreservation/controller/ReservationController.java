@@ -37,9 +37,10 @@ public class ReservationController {
         return new ResponseEntity<Reservation>(service.update(reservation),HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("")
-    public void delete (@RequestBody Reservation reservation){
-        service.delete(reservation);
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable int id){
+        System.out.println("Delete");
+        service.delete(id);
     }
 
     @GetMapping("customer/{id}")
