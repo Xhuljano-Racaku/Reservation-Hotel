@@ -47,7 +47,7 @@
             <input [(ngModel)]="maxPrice" type="text" id="maxPrice" name="maxPrice" value="0" NumberOnly>
           </div>
 
-          <button class="submitButton" type="submit" name="Submit">Submit</button>
+          <button (click)="toRoomList()" class="submitButton" type="submit" name="Submit">Submit</button>
         </section>
       </form>
   </div>
@@ -59,7 +59,7 @@
 <br>
 <br>
 <br>
-<div class="roomCardContainer">
+<div id="roomsList" class="roomCardContainer">
   <div *ngFor="let room of searchedRooms">
     <app-room-card [room]="room" [startDate]="startDate" [endDate]="endDate"></app-room-card>
   </div>

@@ -35,6 +35,12 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  toRoomList() {
+    setTimeout(()=> {
+      document.getElementById("roomsList")?.scrollIntoView({behavior:'smooth'});
+      },200)
+    }
+
   search() {
 
     const call1 = this.roomApi.findByAvailability(this.startDate, this.endDate)

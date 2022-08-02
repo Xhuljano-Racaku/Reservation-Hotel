@@ -21,13 +21,22 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let reservation of reservations">
+    <tr *ngFor="let reservation of reservations; index as i">
       <td>{{reservation.reservationId}}</td>
       <td>{{reservation.roomNum}}</td>
-      <td>{{reservation.startDate | date}}</td>
-      <td>{{reservation.endDate | date}}</td>
+      <td>
+        <div *ngIf="editingReservation && editReservationIndex == i; else notShow"><input [(ngModel)]="reservation.startDate" type="date"></div>
+        <ng-template #notShow><div>{{reservation.startDate | date}}</div></ng-template>
+      </td>
+      <td>
+        <div *ngIf="editingReservation && editReservationIndex == i; else notShow"><input type="date" [(ngModel)]="reservation.endDate"></div>
+        <ng-template #notShow><div>{{reservation.endDate | date}}</div></ng-template>
+      </td>
       <td>{{reservation.customerId}}</td>
-      <td><button class="submitButton">Edit</button></td>
+      <td>
+        <div *ngIf="editingReservation"><button class="submitButton" (click)="updateButton(reservation)">Done</button></div>
+        <div *ngIf="!editingReservation"><button class="submitButton" (click)="viewButton(i)">Edit</button></div>
+      </td>
       <td><button class="submitButton" (click)="cancelReservation(reservation.reservationId)">Cancel</button></td>
     </tr>
     </tbody>

@@ -9,6 +9,11 @@ import {ReservationApiService} from "../reservation-api.service";
 })
 export class ReservationTableComponent implements OnInit {
 
+  editingReservation :boolean = false;
+  editReservationIndex :number = -1;
+  selectedReservation :Reservation = new Reservation();
+
+
   reservationApiService :ReservationApiService;
   reservations :Array<Reservation> = [];
   id: number = 0
@@ -41,4 +46,20 @@ export class ReservationTableComponent implements OnInit {
     });
     }
   }
+
+  viewButton(index :number){
+    this.editingReservation = true;
+    this.editReservationIndex = index;
+    this.selectedReservation = this.reservations[index]
+    console.log(this.selectedReservation)
+  }
+
+  updateButton(reservation :Reservation){
+    this.editingReservation = false;
+    this.editReservationIndex = -1;
+    console.log(this.selectedReservation)
+    this.reservationApiService.update(this.selectedReservation).subscribe()
+  }
+
+
 }

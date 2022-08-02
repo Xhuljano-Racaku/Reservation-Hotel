@@ -24,7 +24,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     ReservationTableComponent,
     CustomerFormComponent,
     StrictNumberDirective,
-    PagenotfoundComponent
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,
