@@ -31,6 +31,10 @@ export class ReservationApiService {
     return this.http.get(`${this.baseUrl}/${id}`).pipe(catchError(this.handleError))
    }
 
+   delete(id :number){
+    return this.http.delete(`${this.baseUrl}${id}`).pipe(catchError(this.handleError));
+   }
+
    private handleError(error: HttpErrorResponse){
     console.log(error)
     return throwError(() => {

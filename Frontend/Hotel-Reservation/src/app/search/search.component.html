@@ -39,12 +39,12 @@
 
           <div class="form-group">
             <label for="minPrice">Min Price: </label>
-            <input [(ngModel)]="minPrice" type="text" id="minPrice" name="minPrice" value="1">
+            <input [(ngModel)]="minPrice" type="text" id="minPrice" name="minPrice" value="1" NumberOnly>
           </div>
 
           <div class="form-group">
             <label for="maxPrice">Max Price: </label>
-            <input [(ngModel)]="maxPrice" type="text" id="maxPrice" name="maxPrice" value="0">
+            <input [(ngModel)]="maxPrice" type="text" id="maxPrice" name="maxPrice" value="0" NumberOnly>
           </div>
 
           <button class="submitButton" type="submit" name="Submit">Submit</button>

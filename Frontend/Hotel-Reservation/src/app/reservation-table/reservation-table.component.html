@@ -16,6 +16,8 @@
       <th>Start Date</th>
       <th>End Date</th>
       <th>Costumer ID</th>
+      <th>Edit</th>
+      <th>Cancel</th>
     </tr>
     </thead>
     <tbody>
@@ -25,6 +27,8 @@
       <td>{{reservation.startDate | date}}</td>
       <td>{{reservation.endDate | date}}</td>
       <td>{{reservation.customerId}}</td>
+      <td><button class="submitButton">Edit</button></td>
+      <td><button class="submitButton" (click)="cancelReservation(reservation.reservationId)">Cancel</button></td>
     </tr>
     </tbody>
   </table>
