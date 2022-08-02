@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
   tier :string = "none";
   startDate :string = format(new Date(), 'yyyy-MM-dd')
   endDate :string = format(new Date(), 'yyyy-MM-dd')
-  numberOfBeds :number = 100;
+  numberOfBeds :number = 0;
   minPrice :number = 0;
   maxPrice :number = 0;
 

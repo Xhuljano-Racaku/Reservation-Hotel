@@ -48,7 +48,7 @@ public class RoomService {
 	
 	public List<Room> findByBeds(int beds){
 		// if user didnt provide beds set it to the max number of beds
-		if(beds == 100) {
+		if(beds == 0) {
 			return repository.findAll();
 		}
 		return repository.findByBeds(beds);
