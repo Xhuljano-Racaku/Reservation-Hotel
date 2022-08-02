@@ -5,6 +5,8 @@ import com.skillstrom.hotelreservation.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -23,6 +25,16 @@ public class ReservationService {
     }
 
     public Reservation save (Reservation reservation){
+    	
+    	// if user didnt provide dates set reservation for just 1 day
+//    	if(reservation.getStartDate().toString() == "") {
+//    		System.out.println(Date.valueOf(LocalDate.now()).toString());
+//    		reservation.setStartDate(Date.valueOf(LocalDate.now()));
+//    	}
+//    	if(reservation.getEndDate().toString() == "") {
+//    		reservation.setEndDate(Date.valueOf(LocalDate.now().plusDays(1)));
+//    	}
+    	
         return repository.save(reservation);
     }
 
