@@ -29,8 +29,8 @@
         <ng-template #notShow><div>{{reservation.startDate | date}}</div></ng-template>
       </td>
       <td>
-        <div *ngIf="editingReservation && editReservationIndex == i; else notShow"><input type="date" [(ngModel)]="reservation.endDate"></div>
-        <ng-template #notShow><div>{{reservation.endDate | date}}</div></ng-template>
+        <div *ngIf="editingReservation && editReservationIndex == i; else notShow2"><input type="date" [(ngModel)]="reservation.endDate"></div>
+        <ng-template #notShow2><div>{{reservation.endDate | date}}</div></ng-template>
       </td>
       <td>{{reservation.customerId}}</td>
       <td>
