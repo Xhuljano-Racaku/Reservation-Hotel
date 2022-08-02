@@ -3,6 +3,7 @@ import { Room } from '../model/Room';
 import { RoomApiService } from '../room-api.service';
 import {forkJoin} from "rxjs";
 import { AppComponent } from '../app.component';
+import { compareAsc, format } from 'date-fns'
 
 @Component({
   selector: 'app-search',
@@ -11,10 +12,10 @@ import { AppComponent } from '../app.component';
 })
 export class SearchComponent implements OnInit {
 
-  tier :string = "";
-  startDate :Date = new Date();
-  endDate :Date = new Date();
-  numberOfBeds :number = 0;
+  tier :string = "none";
+  startDate :string = format(new Date(), 'yyyy-MM-dd')
+  endDate :string = format(new Date(), 'yyyy-MM-dd')
+  numberOfBeds :number = 100;
   minPrice :number = 0;
   maxPrice :number = 0;
 
@@ -34,9 +35,15 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  toRoomList() {
+    setTimeout(()=> {
+      document.getElementById("roomsList")?.scrollIntoView({behavior:'smooth'});
+      },200)
+    }
+
   search() {
 
-    const call1 = this.roomApi.findByAvailability(this.startDate.toString(), this.endDate.toString())
+    const call1 = this.roomApi.findByAvailability(this.startDate, this.endDate)
 
     const call2 = this.roomApi.findByBeds(this.numberOfBeds)
 

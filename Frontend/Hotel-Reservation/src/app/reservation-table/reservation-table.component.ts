@@ -35,12 +35,16 @@ export class ReservationTableComponent implements OnInit {
   }
 
   cancelReservation(id :number){
-    console.log("cancel id: " + id)
+    let confirmation = confirm("Are you sure you want to cancel this reservation?");
+
+    if(confirmation) {
+      console.log("cancel id: " + id)
     this.reservationApiService.delete(id).subscribe(() => {
       if(id != null){
         this.reservations = this.reservations.filter( reservation => reservation.reservationId != id);
       }
     });
+    }
   }
 
   viewButton(index :number){

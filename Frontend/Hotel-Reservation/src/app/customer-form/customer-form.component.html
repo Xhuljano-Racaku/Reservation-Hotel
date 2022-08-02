@@ -1,93 +1,94 @@
-<form (ngSubmit)="save()">
-   <h1>Your details</h1> 
-    <div class="form-group">
-        <label for="firstName">First Name*</label>
-    <input
-      required
-      minlength="3"
-      ngModel 
-      name="firstName" 
-      #firstName="ngModel" 
-      (change)="log(firstName)" 
-      id="firstName" 
-      type="text" 
-      class="form-control"
-      [(ngModel)]="customer.firstName">
-      
+ <div class="container">   
+    <form class="form" [formGroup]="submitForm" (ngSubmit)="save()">
+        <h1>Your details</h1> 
+        <div class="form-group">
+            <label for="firstName">First Name*</label>
+        <input
+        required
+        minlength="3"
+        ngModel 
+        name="firstName" 
+        formControlName="firstName"
+        (change)="log(firstName)" 
+        id="firstName" 
+        type="text" 
+        class="form-control">
+        <!-- [(ngModel)]="customer.firstName"> -->
+        
+            <div 
+            class="alert alert-danger" 
+            *ngIf="firstName?.invalid && firstName?.touched">
+                <div *ngIf="firstName?.errors?.['required']">
+                    First name is required
+                </div>
+                <div *ngIf="firstName?.errors?.['minlength']">
+                    Minimum {{firstName?.errors?.['minlength'].requiredLength}} characters 
+                </div>
+            </div>
+    </div>
+        <div class="form-group">
+            <label for="lastName">Last Name*</label>
+        <input
+        required
+        minlength="3"
+        ngModel 
+        name="lastName" 
+        formControlName="lastName" 
+        (change)="log(lastName)" 
+        id="lastName" 
+        type="text" 
+        class="form-control">
+        <!-- [(ngModel)]="customer.lastName"> -->
         <div 
         class="alert alert-danger" 
-        *ngIf="firstName.touched && !firstName.valid">
-            <div *ngIf="firstName.errors?.['required']">
-                First name is required
+        *ngIf="lastName?.invalid && lastName?.touched">
+            <div *ngIf="lastName?.errors?.['required']">
+                Last name is required
             </div>
-            <div *ngIf="firstName.errors?.['minlength']">
-                Minimum {{firstName.errors?.['minlength'].requiredLength}} characters 
+            <div *ngIf="lastName?.errors?.['minlength']">
+                Minimum {{lastName?.errors?.['minlength'].requiredLength}} characters 
             </div>
         </div>
-</div>
+    </div>
     <div class="form-group">
-        <label for="lastName">Last Name*</label>
+        <label for="phone">Phone Number*</label>
     <input
     required
-    minlength="3"
+    minlength="10"
     ngModel 
-    name="lastName" 
-    #lastName="ngModel" 
-    (change)="log(lastName)" 
-    id="lastName" 
-    type="text" 
-    class="form-control"
-    [(ngModel)]="customer.lastName">
-      <div 
-      class="alert alert-danger" 
-      *ngIf="lastName.touched && !lastName.valid">
-          <div *ngIf="lastName.errors?.['required']">
-              Last name is required
-          </div>
-          <div *ngIf="lastName.errors?.['minlength']">
-              Minimum {{lastName.errors?.['minlength'].requiredLength}} characters 
-          </div>
-      </div>
-</div>
-<div class="form-group">
-    <label for="phone">Phone Number*</label>
-<input
-required
-minlength="10"
-ngModel 
-name="phone" 
-#phone="ngModel" 
-(change)="log(phone)" 
-id="phone" 
-type="text"
-NumberOnly
-class="form-control"
-[(ngModel)]="customer.phone">
-  <div 
-  class="alert alert-danger" 
-  *ngIf="phone.touched && !phone.valid">
-      <div *ngIf="phone.errors?.['required']">
-          Phone number is required
-      </div>
-      <div *ngIf="phone.errors?.['minlength']">
-        At least {{phone.errors?.['minlength'].requiredLength}} digits. No special characters allowed
-      </div>
-  </div>
-</div>
-
-<div class="divButton">
-    <button
-        id="submitButton" 
-        class="btn btn-primary" 
-        type="submit" 
-        value="Save" 
-        [disabled]="!submitForm.valid"
-        [ngStyle]="{'background-color': submitForm.valid ? 'blue': 'gray'}">
-        Submit
-</button>
-    <button 
-        type="button" 
-        class="btn btn-danger" 
-        [routerLink]="'/'">Cancel</button>
+    name="phone" 
+    formControlName="phone" 
+    (change)="log(phone)" 
+    id="phone" 
+    type="text"
+    NumberOnly
+    class="form-control">
+    <!-- [(ngModel)]="customer.phone"> -->
+    <div 
+    class="alert alert-danger" 
+    *ngIf="phone?.invalid && phone?.touched">
+        <div *ngIf="phone?.errors?.['required']">
+            Phone number is required
+        </div>
+        <div *ngIf="phone?.errors?.['minlength']">
+            At least {{phone?.errors?.['minlength'].requiredLength}} digits. No special characters allowed
+        </div>
     </div>
-</form>
+    </div>
+    
+    <div class="divButton">
+        <button
+            id="submitButton" 
+            class="btn btn-primary" 
+            type="submit" 
+            value="Save" 
+            [disabled]="submitForm.invalid">
+            Submit
+    </button>
+        <button 
+            type="button" 
+            class="btn btn-danger" 
+            [routerLink]="'/'">Cancel</button>
+        </div>
+    </form>
+</div>

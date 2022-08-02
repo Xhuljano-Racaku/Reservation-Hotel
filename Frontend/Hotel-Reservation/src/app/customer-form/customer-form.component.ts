@@ -6,6 +6,8 @@ import { CustomerApiService } from '../customer-api.service';
 import { Customer } from '../model/Customer';
 import { Reservation } from '../model/Reservation';
 import { ReservationApiService } from '../reservation-api.service';
+import { StrictNumberDirective } from '../StrictNumberDirective';
+
 
 @Component({
   selector: 'app-customer-form',
@@ -17,7 +19,7 @@ export class CustomerFormComponent implements OnInit {
   log(x : any) {
     console.log(x);
   }
-  submitForm: FormGroup = new FormGroup({});
+  submitForm: FormGroup= new FormGroup({});
   roomNum:number = 0
 
   startDate: Date = new Date()
@@ -44,6 +46,13 @@ export class CustomerFormComponent implements OnInit {
     }
 
   ngOnInit(): void {
+
+    this.submitForm = new FormGroup({
+      'firstName': new FormControl('', Validators.required),
+      'lastName': new FormControl('', Validators.required),
+      'phone': new FormControl('', Validators.required)
+    })
+
     // when router link gets called it passes the room number, and reservation dates
     this.route.queryParams.subscribe(params => {
       this.roomNum = params['roomNum']
@@ -59,8 +68,12 @@ export class CustomerFormComponent implements OnInit {
 
     // Save the customer so we can generate the customer ID
     // We need to have a way to get customer ID of already existing customer
-    this.service.save(this.customer).subscribe(resp => {
+    this.service.save(this.submitForm.value).subscribe(resp => {
       this.customer = resp
+      this.submitForm.reset();
+        setTimeout(()=> {
+          this.router.navigate(['/reservation-table']);
+          },20)
 
       // set the reservation customerid to the generated customer id
       this.reservation.customerId = this.customer.customerId
@@ -71,7 +84,7 @@ export class CustomerFormComponent implements OnInit {
       this.reservation.endDate = this.endDate
 
       this.reservationApi.save(this.reservation).subscribe(resp => {
-        this.reservation = resp
+        this.reservation = resp;
       })
     });
 
