@@ -2,7 +2,7 @@ package com.skillstrom.hotelreservation.beans;
 
 import javax.persistence.*;
 
-import java.util.Date;
+import java.sql.Date;
 
 
 @Entity
