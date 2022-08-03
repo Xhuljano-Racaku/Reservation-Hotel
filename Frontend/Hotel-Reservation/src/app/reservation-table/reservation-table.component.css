@@ -34,9 +34,6 @@ td {
   display: table;
   padding: 0 0 8em 0;
 }
-td button{
-
-}
 
 td, th {
   padding-bottom: 2%;
@@ -95,4 +92,9 @@ form{
   gap: 20px;
   width: 90%;
   justify-content: end;
+}
+
+#cancel{
+  background-color: #D1E7DD;
+  color: green;
 }
