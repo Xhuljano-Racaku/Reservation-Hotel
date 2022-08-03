@@ -27,19 +27,29 @@ public class ReservationService {
 
     public Reservation save (Reservation reservation){
     	
-    	Reservation test = repository.findReservation(reservation.getRoomNum(), reservation.getStartDate().toString(), reservation.getEndDate().toString());
+    	Reservation test = repository.findReservation(reservation.getRoomNum(), reservation.getStartDate().toString(), reservation.getEndDate().toString(), reservation.getCustomerId());
     	
     	if(test == null) {
     		return repository.save(reservation);
     	}else {
-    		System.out.println("here");
     		return null;
     	}
         
     }
 
     public Reservation update(Reservation reservation){
-        return repository.save(reservation);
+    	
+    	Reservation test = repository.findReservation(reservation.getRoomNum(), reservation.getStartDate().toString(), reservation.getEndDate().toString(), reservation.getCustomerId());
+    	
+    	System.out.println(test);
+    	
+    	if(test == null) {
+    		Reservation res = repository.save(reservation);
+    		System.out.println(res);
+    		return res;
+    	}else {
+    		return null;
+    	}
     }
 
     public void delete(int id){repository.deleteById(id);}

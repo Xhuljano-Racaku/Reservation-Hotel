@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 @CrossOrigin(origins="http://localhost:4200")
 @RestController
 @RequestMapping("/reservation/")
@@ -28,12 +30,12 @@ public class ReservationController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Reservation> save(@RequestBody Reservation reservation){
+    public ResponseEntity<Reservation> save(@Valid @RequestBody Reservation reservation){
         return new ResponseEntity<>(service.save(reservation),HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("")
-    public ResponseEntity<Reservation> update (@RequestBody Reservation reservation){
+    public ResponseEntity<Reservation> update (@Valid @RequestBody Reservation reservation){
         return new ResponseEntity<Reservation>(service.update(reservation),HttpStatus.NO_CONTENT);
     }
 

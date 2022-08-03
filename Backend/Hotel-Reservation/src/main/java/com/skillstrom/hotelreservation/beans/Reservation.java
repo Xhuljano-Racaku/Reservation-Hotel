@@ -1,6 +1,7 @@
 package com.skillstrom.hotelreservation.beans;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 
 import java.sql.Date;
 
@@ -15,8 +16,10 @@ public class Reservation {
     @Column(name="room_num")
     private int roomNum;
     @Column(name="start_date")
+    @Future
     private Date startDate;
     @Column(name="end_date")
+    @Future
     private Date endDate;
     @Column(name="customer_id")
     private int customerId;

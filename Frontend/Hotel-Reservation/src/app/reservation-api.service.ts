@@ -23,11 +23,11 @@ export class ReservationApiService {
     return this.http.post(this.baseUrl, reservation).pipe(catchError(this.handleError))
    }
 
-   update(reservation: Reservation){
+   update(reservation: Reservation): Observable<any>{
     return this.http.put(this.baseUrl, reservation).pipe(catchError(this.handleError))
    }
 
-   findByReservationId(id: number){
+   findByReservationId(id: number): Observable<any>{
     return this.http.get(`${this.baseUrl}/${id}`).pipe(catchError(this.handleError))
    }
 

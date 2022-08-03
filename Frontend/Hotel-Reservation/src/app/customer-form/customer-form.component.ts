@@ -69,6 +69,7 @@ export class CustomerFormComponent implements OnInit {
     // Save the customer so we can generate the customer ID
     // We need to have a way to get customer ID of already existing customer
     this.service.save(this.submitForm.value).subscribe(resp => {
+      console.log(resp)
       this.customer = resp
       this.submitForm.reset();
         setTimeout(()=> {

@@ -26,6 +26,7 @@ export class ReservationTableComponent implements OnInit {
 
   reservationApiService :ReservationApiService;
   reservations :Array<Reservation> = [];
+  
   id: number = 0
   router: any;
 
@@ -52,6 +53,7 @@ export class ReservationTableComponent implements OnInit {
 
   search(){
     this.reservationApiService.findByCustomerId(this.id).subscribe(resp => {
+      console.log(resp)
       this.reservations = [];
       this.reservations = resp;
     })
@@ -76,17 +78,28 @@ export class ReservationTableComponent implements OnInit {
     this.editingReservation = true;
     this.editReservationIndex = index;
     this.selectedReservation = this.reservations[index]
+    let results :Reservation = new Reservation()
+
+    results.customerId = this.selectedReservation.customerId
+    results.startDate = this.selectedReservation.startDate
+    results.endDate = this.selectedReservation.endDate
+    results.reservationId = this.selectedReservation.reservationId
+    results.roomNum = this.selectedReservation.roomNum
+
     console.log(this.selectedReservation)
   }
 
   updateButton(reservation :Reservation){
     this.editingReservation = false;
-    this.editReservationIndex = -1;
     console.log(this.selectedReservation)
-    this.reservationApiService.update(this.selectedReservation).subscribe()
+    this.reservationApiService.update(this.selectedReservation).subscribe(resp => {  
+      if(resp != null){
+        this._success.next("Date was succesfully updated");
+      }
+    })
 
-    // Trigger the toast
-    this._success.next("Date was succesfully updated");
+    this.editReservationIndex = -1;
+    
   }
 
 
