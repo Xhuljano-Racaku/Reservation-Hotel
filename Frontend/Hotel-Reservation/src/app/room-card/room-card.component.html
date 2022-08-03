@@ -1,19 +1,16 @@
 <div>
-  <!-- <div class="imageContainer">
-    <img class="hotelImg" src="https://images.pexels.com/photos/11335748/pexels-photo-11335748.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
-  </div> -->
   <div class="roomCardContainer" >
     <div class="topPart">
         <img class="hotelImg1" src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
       <div class="center">
-        <h1>Room number: {{room.roomNum}}</h1>
-        <h2>Tier: {{room.tier}}</h2>
-        <h3>Number of Beds: {{room.beds}}</h3>
+        <h2>Room number: {{room.roomNum}}</h2>
+        <h3>Tier: {{room.tier}}</h3>
+        <h4>Number of Beds: {{room.beds}}</h4>
       </div>
     </div>
     <div class="bottomPart">
-      <div>Price: {{room.price}}/Night</div>
-      <div><button id="reserveButton" class="button" [routerLink]="['/reserve']" [queryParams]="{roomNum:room.roomNum, startDate:startDate, endDate:endDate}">Reservation</button></div>
+      <div><h5>Price: {{room.price}}/Night</h5></div>
+      <div><button id="reserveButton" [routerLink]="['/reserve']" [queryParams]="{roomNum:room.roomNum, startDate:startDate, endDate:endDate}">Reservation</button></div>
       <br>
       <div>
         <!-- <app-search [searchedRooms]="allRooms"></app-search> -->

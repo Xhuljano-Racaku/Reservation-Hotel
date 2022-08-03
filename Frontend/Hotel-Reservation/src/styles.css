@@ -17,13 +17,15 @@ body{
   column-gap: 10px;
 }
 
-
-.submitButton{
-  padding: 3px 9px;
-  background-color: #0088a9;
-}
-.submitButton:hover {
-  background-color: rgba(0,136,169,.8);
+button {
+  padding: 9px 25px;
+  background-color: rgba(0,136,169,1);
+  border: none;
+  border-radius: 50px;
   cursor: pointer;
-  color: black;
+  transition: all 0.3s ease 0s;
+}
+
+button:hover {
+  background-color: rgba(0,136,169,.8);
 }
