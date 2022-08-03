@@ -59,9 +59,11 @@
 <br>
 <br>
 <br>
-<div id="roomsList" class="roomCardContainer">
-  <div *ngFor="let room of searchedRooms">
-    <app-room-card [room]="room" [startDate]="startDate" [endDate]="endDate"></app-room-card>
-  </div>
+<div class="container">
+  <div id="roomsList" class="roomCardContainer">
+    <div *ngFor="let room of searchedRooms">
+      <app-room-card [room]="room" [startDate]="startDate" [endDate]="endDate"></app-room-card>
+    </div>
 </div>
 
+</div>
