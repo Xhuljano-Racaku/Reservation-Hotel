@@ -15,6 +15,14 @@ import { RouterModule } from '@angular/router';
 import { StrictNumberDirective } from './StrictNumberDirective';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
+import {InputTextModule} from 'primeng/inputtext';
+import {DropdownModule} from 'primeng/dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {CalendarModule} from 'primeng/calendar';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +41,12 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     HttpClientModule,
     NgbModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InputTextModule,
+    DropdownModule,
+    BrowserAnimationsModule,
+    InputNumberModule,
+    CalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

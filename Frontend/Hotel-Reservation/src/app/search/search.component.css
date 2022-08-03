@@ -13,27 +13,37 @@ input{
 }
 
 .main {
+  /* display: flex;
+  justify-content: center; */
+
+  width: 100%;
+
+}
+.grid{
   display: flex;
+  flex-direction: row;
+  width: 100%;
   justify-content: center;
 }
 
-.formContainer{
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  /*background-color: #FB667A;*/
-  align-items: center;
-  position: center;
-  margin-top: 20px;
+.header{
+  padding-top: 20px;
 }
 
-form{
+/* .formContainer{
+
+  width: 90%;
+  position: center;
+  margin-top: 20px;
+} */
+
+/* form{
   display: flex;
   flex-direction: column;
   gap: 15px;
-}
+} */
 
-section {
+/* section {
   display: flex;
   gap: 40px;
   width: 100%;
@@ -52,15 +62,15 @@ input {
   margin-left: 10px;
   height: 40px;
   text-align: center;
-}
+} */
 
-.secondSection input{
+/* .secondSection input{
   width: 100px;
 }
 
 .secondSection select{
   width: 120px;
-}
+} */
 
 .hotelImg{
   /*overflow: hidden;*/
