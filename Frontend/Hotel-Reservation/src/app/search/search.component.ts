@@ -10,14 +10,18 @@ import { compareAsc, format } from 'date-fns'
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
+
 export class SearchComponent implements OnInit {
 
-  tier :string = "none";
-  startDate :string = format(new Date(), 'yyyy-MM-dd')
-  endDate :string = format(new Date(), 'yyyy-MM-dd')
-  numberOfBeds :number = 0;
-  minPrice :number = 0;
-  maxPrice :number = 0;
+  tier !:string;
+  startDate :string = ""
+  endDate :string = ""
+  numberOfBeds!: number;
+  minPrice!: number 
+  maxPrice!: number 
+
+  roomOptions : any[] = []
+  tierOptions: any[] = []
 
   roomsByAvailability: Array<Room> = []
   roomsByPrice: Array<Room> = []
@@ -33,15 +37,34 @@ export class SearchComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.roomOptions = [
+      { name: "Any",value: 0 },
+      { name: "1",value: 1 },
+      { name: "2",value: 2 },
+      { name: "3",value: 3 }
+    ]
+
+    this.tierOptions = [
+      { name: "Any",value: "any"},
+      { name: "Junior",value: "junior"},
+      { name: "Executive",value: "executive" },
+      { name: "Presidential",value: "presidential"}
+    ]
   }
 
-  toRoomList() {
-    setTimeout(()=> {
-      document.getElementById("roomsList")?.scrollIntoView({behavior:'smooth'});
-      },200)
-    }
 
   search() {
+
+    if(this.tier == undefined){this.tier = "none"}
+    if(this.numberOfBeds == undefined){this.numberOfBeds = 0}
+    if(this.minPrice == undefined){this.minPrice = 0}
+    if(this.maxPrice == undefined){this.maxPrice = 0}
+    if(this.startDate == ""){
+      this.startDate = format(new Date(), 'yyyy-MM-dd')
+    }
+    if(this.endDate == ""){
+      this.endDate = format(new Date(), 'yyyy-MM-dd')
+    }
 
     const call1 = this.roomApi.findByAvailability(this.startDate, this.endDate)
 
@@ -68,6 +91,8 @@ export class SearchComponent implements OnInit {
       })
     })
 
-    
+    setTimeout(()=> {
+      document.getElementById("roomsList")?.scrollIntoView({behavior:'smooth'});
+      },200)
   }
 }

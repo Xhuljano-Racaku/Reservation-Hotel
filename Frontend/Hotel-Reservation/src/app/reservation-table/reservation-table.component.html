@@ -1,4 +1,10 @@
 <div class="searchContainer">
+  
+  <ngb-alert #selfClosingAlert *ngIf="successMessage" type="success" (closed)="successMessage =''">{{ successMessage}}
+  </ngb-alert>
+  <ngb-alert id="cancel" #selfClosingAlert2 *ngIf="cancelMessage" type="cancel" (closed)="cancelMessage =''">{{ cancelMessage}}
+  </ngb-alert>
+
   <form (ngSubmit)="search()">
       <label for="id">Customer ID: </label>
       <input [(ngModel)]="id" name="id" type="number" value="0">

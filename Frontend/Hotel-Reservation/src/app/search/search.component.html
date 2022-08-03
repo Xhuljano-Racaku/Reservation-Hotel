@@ -1,69 +1,65 @@
 <div class="main">
-  <div class="formContainer">
-    <div class="header">
+    <div class="header grid">
       <h1>Search for available rooms</h1>
     </div>
-      <form (ngSubmit)="search()">
-        <section class="firstSection">
-          <div class="form-group">
-            <label for="tier">Tier: </label>
-            <select [(ngModel)]="tier" name="tier" id="tier">
-              <option value=""></option>
-              <option value="executive">Executive</option>
-              <option value="junior">Junior</option>
-              <option value="presidential">Presidential</option>
-            </select>
-          </div>
 
-          <div class="form-group">
-            <label for="startDate">Start Date: </label>
-            <input [(ngModel)]="startDate" type="date" id="startDate" name="startDate">
-          </div>
+    <div class="grid">
 
-          <div class="form-group">
-            <label for="endDate">End Date: </label>
-            <input [(ngModel)]="endDate" type="date" id="endDate" name="endDate">
+          <div class="p-col-5 p-md-4">
+            <span class="p-float-label">
+              <p-dropdown inputId="tier" [autoDisplayFirst]="false" [options]="tierOptions" optionLabel="name" optionValue="value" [style]="{'minWidth': '10rem'}" [(ngModel)]="tier" ></p-dropdown>
+              <label for="tier">Tier</label>
+            </span>
           </div>
-        </section>
-        <section class="secondSection">
-          <div class="form-group">
-            <label for="numberOfBeds">Number of Beds: </label>
-            <select [(ngModel)]="numberOfBeds" name="numberOfBeds" id="numberOfBeds">
-              <option value="0">All</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
+          
+          <div class="p-col-5 p-md-4">
+            <span class="p-float-label">
+              <p-calendar name="startDate" [(ngModel)]="startDate" id="startDate" dataType="string" dateFormat="yy-mm-dd" ></p-calendar>
+              <label for="startDate">Start Date</label>
+            </span>
           </div>
-
-          <div class="form-group">
-            <label for="minPrice">Min Price: </label>
-            <input [(ngModel)]="minPrice" type="text" id="minPrice" name="minPrice" value="1" NumberOnly>
+          
+          <div class="p-col-5 p-md-4">
+            <span class="p-float-label">
+              <p-calendar [(ngModel)]="endDate" id="startDate" dataType="string" dateFormat="yy-mm-dd" ></p-calendar>
+              <label for="endDate">End Date</label>
+            </span>
           </div>
-
-          <div class="form-group">
-            <label for="maxPrice">Max Price: </label>
-            <input [(ngModel)]="maxPrice" type="text" id="maxPrice" name="maxPrice" value="0" NumberOnly>
+          
+          <div class="p-col-5 p-md-4">
+            <span class="p-float-label">
+              <p-dropdown inputId="beds" [autoDisplayFirst]="false" [options]="roomOptions" optionLabel="name" optionValue="value" [style]="{'minWidth': '8rem'}" [(ngModel)]="numberOfBeds" ></p-dropdown>
+              <label for="beds">Beds</label>
+            </span>
           </div>
-
-          <button (click)="toRoomList()" class="submitButton" type="submit" name="Submit">Submit</button>
-        </section>
-      </form>
-  </div>
-</div>
-<div class="imageContainer">
-<!--  <img class="hotelImg" src="https://images.pexels.com/photos/11335748/pexels-photo-11335748.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">-->
-</div>
-
-<br>
-<br>
-<br>
-<div class="container">
-  <div id="roomsList" class="roomCardContainer">
-    <div *ngFor="let room of searchedRooms">
-      <app-room-card [room]="room" [startDate]="startDate" [endDate]="endDate"></app-room-card>
+          
+          <div class="p-col-5 p-md-4"> 
+            <span class="p-float-label">
+              <p-inputNumber inputId="minPrice" [useGrouping]="false" [(ngModel)]="minPrice" ></p-inputNumber>
+              <label for="minPrice">Min Price</label>
+            </span>
+          </div>
+          
+          <div class="p-col-5 p-md-4">
+            <span class="p-float-label">
+              <p-inputNumber inputId="maxPrice" [useGrouping]="false" [(ngModel)]="maxPrice" ></p-inputNumber>
+              <label for="maxPrice">Max Price</label>
+            </span>
+          </div>
+          
+          <button (click)="search()" class="submitButton" type="submit" name="Submit">Submit</button>
+        
     </div>
 </div>
+<div class="imageContainer">
 
+</div>
+
+<br>
+<br>
+<br>
+<div id="roomsList" class="roomCardContainer">
+  <div *ngFor="let room of searchedRooms">
+    <app-room-card [room]="room" [startDate]="startDate" [endDate]="endDate"></app-room-card>
+  </div>
 </div>
