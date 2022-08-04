@@ -25,8 +25,11 @@ export class Reservation{
     var startDateArray = sDate.toLocaleDateString().split("/");
     var endDateArray = eDate.toLocaleDateString().split("/");
 
-    var newStartDate = new Date(parseInt(startDateArray[2]),parseInt(startDateArray[0]),parseInt(startDateArray[1]));
-    var newEndDate = new Date(parseInt(endDateArray[2]),parseInt(endDateArray[0]),parseInt(endDateArray[1]));
+    console.log(startDateArray)
+    console.log(endDateArray)
+
+    var newStartDate = new Date(parseInt(startDateArray[2]),parseInt(startDateArray[0])-1,parseInt(startDateArray[1]));
+    var newEndDate = new Date(parseInt(endDateArray[2]),parseInt(endDateArray[0])-1,parseInt(endDateArray[1]));
 
     console.log(newStartDate);
     console.log(newEndDate);
