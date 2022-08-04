@@ -30,7 +30,7 @@ public class ReservationService {
     	
     	Reservation test = repository.findReservation(reservation.getRoomNum(), reservation.getStartDate().toString(), reservation.getEndDate().toString(), reservation.getCustomerId());
     	
-    	if(reservation.getEndDate().before(reservation.getStartDate())) {
+    	if(reservation.getEndDate().isBefore(reservation.getStartDate())) {
     		System.out.println("End date cannot be before start date");
     		return null;
     	}
@@ -47,7 +47,7 @@ public class ReservationService {
     	
     	Reservation test = repository.findReservation(reservation.getRoomNum(), reservation.getStartDate().toString(), reservation.getEndDate().toString(), reservation.getCustomerId());
     	
-    	if(reservation.getEndDate().before(reservation.getStartDate())) {
+    	if(reservation.getEndDate().isBefore(reservation.getStartDate())) {
     		System.out.println("End date cannot be before start date");
     		return null;
     	}
