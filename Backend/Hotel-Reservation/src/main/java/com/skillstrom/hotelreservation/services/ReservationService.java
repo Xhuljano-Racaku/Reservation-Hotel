@@ -5,6 +5,7 @@ import com.skillstrom.hotelreservation.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -29,9 +30,14 @@ public class ReservationService {
     	
     	Reservation test = repository.findReservation(reservation.getRoomNum(), reservation.getStartDate().toString(), reservation.getEndDate().toString(), reservation.getCustomerId());
     	
+    	if(reservation.getEndDate().before(reservation.getStartDate())) {
+    		System.out.println("End date cannot be before start date");
+    		return null;
+    	}
     	if(test == null) {
     		return repository.save(reservation);
     	}else {
+    		System.out.println("New dates conflict with existing reservation");
     		return null;
     	}
         
@@ -41,13 +47,14 @@ public class ReservationService {
     	
     	Reservation test = repository.findReservation(reservation.getRoomNum(), reservation.getStartDate().toString(), reservation.getEndDate().toString(), reservation.getCustomerId());
     	
-    	System.out.println(test);
-    	
+    	if(reservation.getEndDate().before(reservation.getStartDate())) {
+    		System.out.println("End date cannot be before start date");
+    		return null;
+    	}
     	if(test == null) {
-    		Reservation res = repository.save(reservation);
-    		System.out.println(res);
-    		return res;
+    		return repository.save(reservation);
     	}else {
+    		System.out.println("New dates conflict with existing reservation");
     		return null;
     	}
     }

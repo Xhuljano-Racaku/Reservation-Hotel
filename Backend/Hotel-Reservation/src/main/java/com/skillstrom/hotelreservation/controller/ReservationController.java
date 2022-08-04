@@ -31,12 +31,27 @@ public class ReservationController {
 
     @PostMapping("")
     public ResponseEntity<Reservation> save(@Valid @RequestBody Reservation reservation){
-        return new ResponseEntity<>(service.save(reservation),HttpStatus.NO_CONTENT);
+    	
+    	Reservation newRes = service.update(reservation);
+    	
+    	if(newRes == null) {
+    		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    	}else {
+    		return new ResponseEntity<>(newRes,HttpStatus.NO_CONTENT);
+    	}
     }
 
     @PutMapping("")
     public ResponseEntity<Reservation> update (@Valid @RequestBody Reservation reservation){
-        return new ResponseEntity<Reservation>(service.update(reservation),HttpStatus.NO_CONTENT);
+    	
+    	Reservation newRes = service.update(reservation);
+    	
+    	if(newRes == null) {
+    		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    	}else {
+    		return new ResponseEntity<Reservation>(newRes,HttpStatus.NO_CONTENT);
+    	}
+        
     }
 
     @DeleteMapping("{id}")

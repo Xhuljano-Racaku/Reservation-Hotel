@@ -75,31 +75,23 @@ export class ReservationTableComponent implements OnInit {
   }
 
   viewButton(index :number){
+    this.editReservationIndex = -1;
     this.editingReservation = true;
     this.editReservationIndex = index;
     this.selectedReservation = this.reservations[index]
-    let results :Reservation = new Reservation()
-
-    results.customerId = this.selectedReservation.customerId
-    results.startDate = this.selectedReservation.startDate
-    results.endDate = this.selectedReservation.endDate
-    results.reservationId = this.selectedReservation.reservationId
-    results.roomNum = this.selectedReservation.roomNum
-
     console.log(this.selectedReservation)
   }
 
   updateButton(reservation :Reservation){
     this.editingReservation = false;
     console.log(this.selectedReservation)
-    this.reservationApiService.update(this.selectedReservation).subscribe(resp => {  
-      if(resp != null){
+    this.reservationApiService.update(this.selectedReservation).subscribe(resp => { },
+      err => {
+        console.log("error") // put failure toast here when we have it
+      },
+      () => {
         this._success.next("Date was succesfully updated");
-      }
-    })
-
-    this.editReservationIndex = -1;
-    
+      })
   }
 
 
