@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { HeaderComponent } from './header/header.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
@@ -17,6 +18,10 @@ const routes: Routes = [{
 
 {
   path: 'reserve', component: CustomerFormComponent
+},
+
+{
+  path: 'contact', component: ContactFormComponent
 },
 
 {
