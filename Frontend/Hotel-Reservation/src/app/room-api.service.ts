@@ -31,6 +31,18 @@ export class RoomApiService {
   }
 
   findByAvailability(start: string, end: string): Observable<any>{
+    let startDateArray = start.split("-");
+    start = "";
+    start += startDateArray[2] + "-";
+    start += startDateArray[0] + "-";
+    start += startDateArray[1] + "";
+
+    let endDateArray = end.split("-");
+    end = "";
+    end += endDateArray[2] + "-";
+    end += endDateArray[0] + "-";
+    end += endDateArray[1] + "";
+
     return this.http.get(`${this.baseUrl}/available/${start}_${end}`).pipe(catchError(this.handleError))
   }
 

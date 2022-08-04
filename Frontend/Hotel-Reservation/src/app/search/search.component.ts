@@ -24,8 +24,8 @@ export class SearchComponent implements OnInit {
   startDate :string = ""
   endDate :string = ""
   numberOfBeds!: number;
-  minPrice!: number 
-  maxPrice!: number 
+  minPrice!: number
+  maxPrice!: number
 
   roomOptions : any[] = []
   tierOptions: any[] = []
@@ -34,7 +34,7 @@ export class SearchComponent implements OnInit {
   roomsByPrice: Array<Room> = []
   roomsByBeds: Array<Room> = []
   roomsByTier: Array<Room> = []
-  
+
   @Input() searchedRooms: Array<Room> = []
 
   roomApi: RoomApiService
@@ -74,10 +74,10 @@ export class SearchComponent implements OnInit {
     if(this.minPrice == undefined){this.minPrice = 0}
     if(this.maxPrice == undefined){this.maxPrice = 0}
     if(this.startDate == ""){
-      this.startDate = format(new Date(), 'yyyy-MM-dd')
+      this.startDate = format(new Date(), 'MM-dd-yyyy')
     }
     if(this.endDate == ""){
-      this.endDate = format(new Date(), 'yyyy-MM-dd')
+      this.endDate = format(new Date(), 'MM-dd-yyyy')
     }
 
     const call1 = this.roomApi.findByAvailability(this.startDate, this.endDate)
@@ -99,7 +99,7 @@ export class SearchComponent implements OnInit {
       this._error.next("Min price can not be bigger than max price");
       this.searchedRooms = [];
     }
-    
+
     else {
 
     forkJoin(call1, call2, call3, call4).subscribe(resp => {
@@ -113,7 +113,7 @@ export class SearchComponent implements OnInit {
             .filter((abp: { roomNum: number; }) => {
               return resp[3].some((tier: { roomNum: number; }) => tier.roomNum === abp.roomNum)
             })
-    
+
           this.searchedRooms.forEach((room: any) => {
             console.log(room)
           })
