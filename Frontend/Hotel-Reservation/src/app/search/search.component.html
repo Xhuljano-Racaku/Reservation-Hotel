@@ -1,4 +1,6 @@
 <div class="main">
+  <ngb-alert id="error" #selfClosingAlert3 *ngIf="errorMessage" type="error" (closed)="errorMessage =''">{{ errorMessage}}
+  </ngb-alert>
     <div class="header grid">
       <h1>Search for available rooms</h1>
     </div>

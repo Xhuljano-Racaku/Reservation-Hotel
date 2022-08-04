@@ -1,9 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Room } from '../model/Room';
 import { RoomApiService } from '../room-api.service';
-import {forkJoin} from "rxjs";
+import {forkJoin, Subject} from "rxjs";
 import { AppComponent } from '../app.component';
 import { compareAsc, format } from 'date-fns'
+import { debounceTime } from 'rxjs';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -12,6 +15,10 @@ import { compareAsc, format } from 'date-fns'
 })
 
 export class SearchComponent implements OnInit {
+
+  private _error = new Subject<string>();
+  @ViewChild('selfClosingAlert3', {static: false}) selfClosingAlert3: NgbAlert | undefined;
+  errorMessage = '';
 
   tier !:string;
   startDate :string = ""
@@ -32,7 +39,7 @@ export class SearchComponent implements OnInit {
 
   roomApi: RoomApiService
 
-  constructor(roomApi: RoomApiService) {
+  constructor(roomApi: RoomApiService, private router: Router) {
     this.roomApi = roomApi
    }
 
@@ -50,6 +57,13 @@ export class SearchComponent implements OnInit {
       { name: "Executive",value: "executive" },
       { name: "Presidential",value: "presidential"}
     ]
+
+    this._error.subscribe(message => this.errorMessage = message);
+    this._error.pipe(debounceTime(2000)).subscribe(() => {
+      if (this.selfClosingAlert3) {
+        this.selfClosingAlert3.close()
+      }
+    });
   }
 
 
@@ -74,25 +88,39 @@ export class SearchComponent implements OnInit {
 
     const call4 = this.roomApi.findByTier(this.tier)
 
+    if(this.startDate >= this.endDate) {
+
+      console.log("error")
+      this._error.next("End date cannot be before or same as start date");
+      this.router.navigate(['/']);
+    }
+
+    else if (this.minPrice > this.maxPrice) {
+      this._error.next("Min price can not be bigger than max price");
+    }
+    
+    else {
+
     forkJoin(call1, call2, call3, call4).subscribe(resp => {
 
-      this.searchedRooms = resp[0].filter((a: { roomNum: any; }) => {
-        return resp[1].some((bed: { roomNum: any; }) => bed.roomNum === a.roomNum)
-      })
-        .filter((ab: { roomNum: number; }) => {
-          return resp[2].some((price: { roomNum: number; }) => price.roomNum === ab.roomNum)
-        })
-        .filter((abp: { roomNum: number; }) => {
-          return resp[3].some((tier: { roomNum: number; }) => tier.roomNum === abp.roomNum)
-        })
+          this.searchedRooms = resp[0].filter((a: { roomNum: any; }) => {
+            return resp[1].some((bed: { roomNum: any; }) => bed.roomNum === a.roomNum)
+          })
+            .filter((ab: { roomNum: number; }) => {
+              return resp[2].some((price: { roomNum: number; }) => price.roomNum === ab.roomNum)
+            })
+            .filter((abp: { roomNum: number; }) => {
+              return resp[3].some((tier: { roomNum: number; }) => tier.roomNum === abp.roomNum)
+            })
+    
+          this.searchedRooms.forEach((room: any) => {
+            console.log(room)
+          })
 
-      this.searchedRooms.forEach((room: any) => {
-        console.log(room)
-      })
-    })
-
-    setTimeout(()=> {
-      document.getElementById("roomsList")?.scrollIntoView({behavior:'smooth'});
-      },200)
-  }
+          setTimeout(()=> {
+            document.getElementById("roomsList")?.scrollIntoView({behavior:'smooth'});
+            },200)
+          })
+          }
+}
 }

@@ -46,6 +46,11 @@ input{
   margin-top: 20px;
 }
 
+#error {
+  background-color: rgba(170, 38, 38, 0.542);
+  color: rgb(255, 254, 254);
+}
+
 /* .formContainer{
 
   width: 90%;

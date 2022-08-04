@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 import { debounceTime, Subject } from 'rxjs';
 import {Reservation} from "../model/Reservation";
@@ -22,6 +22,9 @@ export class ReservationTableComponent implements OnInit {
   private _error = new Subject<string>();
   @ViewChild('selfClosingAlert3', {static: false}) selfClosingAlert3: NgbAlert | undefined;
   errorMessage = '';
+
+  @Input() startDate: string = ""
+  @Input() endDate: string = ""
 
   editingReservation :boolean = false;
   editReservationIndex :number = -1;
@@ -98,12 +101,12 @@ export class ReservationTableComponent implements OnInit {
     console.log(this.selectedReservation)
     this.reservationApiService.update(this.selectedReservation).subscribe(resp => { },
       err => {
-        console.log("error") // put failure toast here when we have it
-        this._error.next("End date cannot be before start date");
+        console.log("error")
+        this._error.next("End date cannot be before or same as start date");
       },
       () => {
-        this._success.next("Date was succesfully updated");
-      })
+          this._success.next("Date was succesfully updated");
+         })
   }
 
 
