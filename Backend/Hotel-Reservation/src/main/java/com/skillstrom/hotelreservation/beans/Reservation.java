@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Future;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 
 @Entity
@@ -17,24 +18,24 @@ public class Reservation {
     private int roomNum;
     @Column(name="start_date")
     @Future
-    private Date startDate;
+    private LocalDate startDate;
     @Column(name="end_date")
     @Future
-    private Date endDate;
+    private LocalDate endDate;
     @Column(name="customer_id")
     private int customerId;
 
     public Reservation() {
     }
 
-    public Reservation(int roomNum, Date startDate, Date endDate, int customerId) {
+    public Reservation(int roomNum, LocalDate startDate, LocalDate endDate, int customerId) {
         this.roomNum = roomNum;
         this.startDate = startDate;
         this.endDate = endDate;
         this.customerId = customerId;
     }
 
-    public Reservation(int reservationId, int roomNum, Date startDate, Date endDate, int customerId) {
+    public Reservation(int reservationId, int roomNum, LocalDate startDate, LocalDate endDate, int customerId) {
         this.reservationId = reservationId;
         this.roomNum = roomNum;
         this.startDate = startDate;
@@ -58,19 +59,19 @@ public class Reservation {
         this.roomNum = roomNum;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
