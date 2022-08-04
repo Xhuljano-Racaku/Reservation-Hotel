@@ -4,6 +4,8 @@
   </ngb-alert>
   <ngb-alert id="cancel" #selfClosingAlert2 *ngIf="cancelMessage" type="cancel" (closed)="cancelMessage =''">{{ cancelMessage}}
   </ngb-alert>
+  <ngb-alert id="error" #selfClosingAlert3 *ngIf="errorMessage" type="error" (closed)="errorMessage =''">{{ errorMessage}}
+  </ngb-alert>
 
   <span class="input-form">
     <label for="customerId">Customer ID</label>

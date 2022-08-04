@@ -106,3 +106,8 @@ form{
   background-color: #D1E7DD;
   color: green;
 }
+
+#error{
+  background-color: rgba(255, 0, 0, 0.542);
+  color: white;
+}

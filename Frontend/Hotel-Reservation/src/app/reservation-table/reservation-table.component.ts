@@ -19,6 +19,10 @@ export class ReservationTableComponent implements OnInit {
   @ViewChild('selfClosingAlert2', {static: false}) selfClosingAlert2: NgbAlert | undefined;
   cancelMessage = '';
 
+  private _error = new Subject<string>();
+  @ViewChild('selfClosingAlert3', {static: false}) selfClosingAlert3: NgbAlert | undefined;
+  errorMessage = '';
+
   editingReservation :boolean = false;
   editReservationIndex :number = -1;
   selectedReservation :Reservation = new Reservation();
@@ -47,6 +51,13 @@ export class ReservationTableComponent implements OnInit {
     this._cancel.pipe(debounceTime(2000)).subscribe(() => {
       if (this.selfClosingAlert2) {
         this.selfClosingAlert2.close()
+      }
+    });
+
+    this._error.subscribe(message => this.errorMessage = message);
+    this._error.pipe(debounceTime(2000)).subscribe(() => {
+      if (this.selfClosingAlert3) {
+        this.selfClosingAlert3.close()
       }
     });
   }
@@ -88,6 +99,7 @@ export class ReservationTableComponent implements OnInit {
     this.reservationApiService.update(this.selectedReservation).subscribe(resp => { },
       err => {
         console.log("error") // put failure toast here when we have it
+        this._error.next("End date cannot be before start date");
       },
       () => {
         this._success.next("Date was succesfully updated");
