@@ -1,5 +1,9 @@
- <div class="container">   
+ <div class="container">
     <form class="form" [formGroup]="submitForm" (ngSubmit)="save()">
+        <h1>You are Reserving:</h1>
+        <p>Room: {{roomNum}}</p>
+        <p>Reservation start date: {{startDate}}</p>
+        <p>Reservation end date: {{endDate}}</p>
         <h1>Your details</h1> 
         <div class="form-group">
             <label for="firstName">First Name*</label>
