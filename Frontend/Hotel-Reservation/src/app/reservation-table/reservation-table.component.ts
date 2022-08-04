@@ -34,7 +34,7 @@ export class ReservationTableComponent implements OnInit {
   reservationApiService :ReservationApiService;
   reservations :Array<Reservation> = [];
   
-  id: number = 0
+  number: number = 0
   router: any;
 
   constructor(reservationApiService :ReservationApiService) {
@@ -66,7 +66,7 @@ export class ReservationTableComponent implements OnInit {
   }
 
   search(){
-    this.reservationApiService.findByCustomerId(this.id).subscribe(resp => {
+    this.reservationApiService.findByCustomerPhone(this.number.toString()).subscribe(resp => {
       console.log(resp)
       this.reservations = [];
       this.reservations = resp;

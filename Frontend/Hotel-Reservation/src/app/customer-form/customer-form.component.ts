@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { forkJoin } from 'rxjs';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
+import { Subject, debounceTime } from 'rxjs';
 import { CustomerApiService } from '../customer-api.service';
 import { Customer } from '../model/Customer';
 import { Reservation } from '../model/Reservation';
 import { ReservationApiService } from '../reservation-api.service';
-import { StrictNumberDirective } from '../StrictNumberDirective';
 
 
 @Component({
@@ -15,6 +15,14 @@ import { StrictNumberDirective } from '../StrictNumberDirective';
   styleUrls: ['./customer-form.component.css']
 })
 export class CustomerFormComponent implements OnInit {
+
+  private _success = new Subject<string>();
+  @ViewChild('selfClosingAlert', {static: false}) selfClosingAlert: NgbAlert | undefined;
+  successMessage = '';
+
+  private _error = new Subject<string>();
+  @ViewChild('selfClosingAlert3', {static: false}) selfClosingAlert3: NgbAlert | undefined;
+  errorMessage = '';
 
   log(x : any) {
     console.log(x);
@@ -31,7 +39,7 @@ export class CustomerFormComponent implements OnInit {
 
 
 
-  constructor(private service: CustomerApiService, private router: Router, private route: ActivatedRoute, private reservationApi: ReservationApiService) { }
+  constructor(private service: CustomerApiService, private route: ActivatedRoute, private reservationApi: ReservationApiService) { }
 
   get firstName() {
     return this.submitForm.get('firstName');
@@ -62,19 +70,28 @@ export class CustomerFormComponent implements OnInit {
     console.log(this.startDate)
     console.log(this.endDate)
     console.log(this.roomNum)
+
+    this._success.subscribe(message => this.successMessage = message);
+    this._success.pipe(debounceTime(2000)).subscribe(() => {
+      if (this.selfClosingAlert) {
+        this.selfClosingAlert.close()
+      }
+    });
+
+    this._error.subscribe(message => this.errorMessage = message);
+    this._error.pipe(debounceTime(2000)).subscribe(() => {
+      if (this.selfClosingAlert3) {
+        this.selfClosingAlert3.close()
+      }
+    });
   }
 
   save() : void {
-
     // Save the customer so we can generate the customer ID
     // We need to have a way to get customer ID of already existing customer
     this.service.save(this.submitForm.value).subscribe(resp => {
-      console.log(resp)
       this.customer = resp
       this.submitForm.reset();
-        setTimeout(()=> {
-          this.router.navigate(['/reservation-table']);
-          },20)
 
       // set the reservation customerid to the generated customer id
       this.reservation.customerId = this.customer.customerId
@@ -86,6 +103,14 @@ export class CustomerFormComponent implements OnInit {
 
       this.reservationApi.save(this.reservation).subscribe(resp => {
         this.reservation = resp;
+      },
+      err => {
+        
+        this._error.next("Conflicting reservation, Can not process reservation");
+      },
+      () => {
+        console.log("here")
+        this._success.next("Reservation successfully created");
       })
     });
 

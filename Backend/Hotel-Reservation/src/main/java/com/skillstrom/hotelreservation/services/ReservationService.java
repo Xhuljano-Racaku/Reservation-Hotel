@@ -25,6 +25,10 @@ public class ReservationService {
     public Reservation findById(int reservationId){
         return repository.findById(reservationId).get();
     }
+    
+    public List<Reservation> findByPhone(String phone){
+    	return repository.findByPhone(phone);
+    }
 
     public Reservation save (Reservation reservation){
     	

@@ -19,6 +19,10 @@ export class ReservationApiService {
     return this.http.get(`${this.baseUrl}customer/${id}`).pipe(catchError(this.handleError))
    }
 
+   findByCustomerPhone(number: string): Observable<any>{
+    return this.http.get(`${this.baseUrl}phone/${number}`).pipe(catchError(this.handleError))
+   }
+
    save(reservation: Reservation): Observable<any>{
     return this.http.post(this.baseUrl, reservation).pipe(catchError(this.handleError))
    }

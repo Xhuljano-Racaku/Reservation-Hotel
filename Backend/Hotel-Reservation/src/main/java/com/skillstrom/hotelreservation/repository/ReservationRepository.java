@@ -23,4 +23,9 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 			+ "OR end_date = ?3) "
 			+ "AND customer_id != ?4", nativeQuery = true)
 	Reservation findReservation(int roomNum, String startDate, String endDate, int customer_id);
+	
+	@Query(value = "SELECT reservation_id, room_num, start_date, end_date, reservation.customer_id "
+			+ "FROM reservation LEFT JOIN customer on reservation.customer_id = customer.customer_id "
+			+ "WHERE phone = ?1", nativeQuery = true)
+	List<Reservation> findByPhone(String phone);
 }
