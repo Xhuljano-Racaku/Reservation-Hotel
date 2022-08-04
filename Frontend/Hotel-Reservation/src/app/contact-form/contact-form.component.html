@@ -1,1 +1,24 @@
-<p>contact-form works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+        <form class="contactForm" [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)">
+            <div class="form-group">
+                <h2 class="text-center mb-5">Contact us</h2>
+                <label for="Email">Email*</label>
+                <input type="email" class="form-control" name="Email" aria-describedby="emailHelp" placeholder="Enter email"formControlName="Email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="fullname">Full Name*</label>
+                <input type="text" class="form-control" name="Fullname" placeholder="Full Name" formControlName="Fullname">
+            </div>
+            <div class="form-group">
+                <label for="comment">Comment*</label>
+                <textarea class="form-control" formControlName="Comment" name="Comment">
+                </textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Submit</button>
+        </form>
+        </div>
+    </div>
+</div>
