@@ -94,7 +94,7 @@ export class ReservationTableComponent implements OnInit {
     console.log(this.selectedReservation)
     this.reservationApiService.update(this.selectedReservation).subscribe(resp => {  
       if(resp != null){
-
+        
       }
     })
 
