@@ -5,11 +5,12 @@
   <ngb-alert id="cancel" #selfClosingAlert2 *ngIf="cancelMessage" type="cancel" (closed)="cancelMessage =''">{{ cancelMessage}}
   </ngb-alert>
 
-  <form (ngSubmit)="search()">
-      <label for="id">Customer ID: </label>
-      <input [(ngModel)]="id" name="id" type="number" value="0">
-    <button class="submitButton" type="submit" name="Submit">Submit</button>
-  </form>
+  <span class="input-form">
+    <label for="customerId">Customer ID</label>
+    <p-inputNumber [(ngModel)]="id" inputId="customerId" [useGrouping]="false"></p-inputNumber>
+    <button class="submitButton" type="submit" name="Submit" (click)="search()">Submit</button>
+  </span>
+    
 </div>
 
 <div>
@@ -31,11 +32,15 @@
       <td>{{reservation.reservationId}}</td>
       <td>{{reservation.roomNum}}</td>
       <td>
-        <div *ngIf="editingReservation && editReservationIndex == i; else notShow"><input [(ngModel)]="reservation.startDate" type="date"></div>
+        <div *ngIf="editingReservation && editReservationIndex == i; else notShow">
+          <p-calendar [(ngModel)]="reservation.startDate" dataType="string" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+        </div>
         <ng-template #notShow><div>{{reservation.startDate | date}}</div></ng-template>
       </td>
       <td>
-        <div *ngIf="editingReservation && editReservationIndex == i; else notShow2"><input type="date" [(ngModel)]="reservation.endDate"></div>
+        <div *ngIf="editingReservation && editReservationIndex == i; else notShow2">
+          <p-calendar [(ngModel)]="reservation.endDate" dataType="string" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+        </div>
         <ng-template #notShow2><div>{{reservation.endDate | date}}</div></ng-template>
       </td>
       <td>{{reservation.customerId}}</td>

@@ -94,6 +94,14 @@ form{
   justify-content: end;
 }
 
+.input-form{
+  padding-top: 20px;
+  display: flex;
+  gap: 20px;
+  width: 90%;
+  justify-content: end;
+}
+
 #cancel{
   background-color: #D1E7DD;
   color: green;
