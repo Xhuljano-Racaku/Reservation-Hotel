@@ -74,10 +74,12 @@ export class SearchComponent implements OnInit {
     if(this.minPrice == undefined){this.minPrice = 0}
     if(this.maxPrice == undefined){this.maxPrice = 0}
     if(this.startDate == ""){
-      this.startDate = format(new Date(), 'MM-dd-yyyy')
+      let today = new Date()
+      this.startDate = format(today.setDate(today.getDate()+1), 'MM-dd-yyyy')
     }
     if(this.endDate == ""){
-      this.endDate = format(new Date(), 'MM-dd-yyyy')
+      let today = new Date()
+      this.endDate = format(today.setDate(today.getDate()+2), 'MM-dd-yyyy')
     }
 
     const call1 = this.roomApi.findByAvailability(this.startDate, this.endDate)

@@ -1,5 +1,18 @@
- <div class="container">   
+<div>
+    <ngb-alert id="success" #selfClosingAlert *ngIf="successMessage" type="success" (closed)="successMessage =''">{{ successMessage}}
+    </ngb-alert>
+    <ngb-alert id="error" #selfClosingAlert3 *ngIf="errorMessage" type="error" (closed)="errorMessage =''">{{ errorMessage}}
+    </ngb-alert>
+</div>
+
+ 
+ 
+ <div class="container">
     <form class="form" [formGroup]="submitForm" (ngSubmit)="save()">
+        <h1>You are Reserving:</h1>
+        <p>Room: {{roomNum}}</p>
+        <p>Reservation start date: {{startDate}}</p>
+        <p>Reservation end date: {{endDate}}</p>
         <h1>Your details</h1> 
         <div class="form-group">
             <label for="firstName">First Name*</label>

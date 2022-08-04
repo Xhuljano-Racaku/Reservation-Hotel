@@ -31,4 +31,17 @@ export class RoomCardComponent implements OnInit {
   ngOnInit(): void {
     this.roomApiService.findAll().subscribe(resp => this.allRooms = resp);
   }
+
+  checkTierJunior(tier: string): boolean{
+    if(tier == "junior"){return true}
+    else{return false}
+  }
+  checkTierExecutive(tier: string): boolean{
+    if(tier == "executive"){return true}
+    else{return false}
+  }
+  checkTierPresidential(tier: string): boolean{
+    if(tier == "presidential"){return true}
+    else{return false}
+  }
 }

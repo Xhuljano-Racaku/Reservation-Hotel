@@ -48,3 +48,16 @@ button {
 .alert {
     color: red;
 }
+
+#success{
+    background-color: #D1E7DD;
+    color: green;
+    width: 25%;
+  }
+  
+  
+#error{
+background-color: rgba(253, 111, 111, 0.588);
+color: rgb(0, 0, 0);
+width: 30%;
+}

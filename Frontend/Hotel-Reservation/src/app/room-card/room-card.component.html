@@ -1,7 +1,9 @@
 <div>
   <div class="roomCardContainer" >
     <div class="topPart">
-        <img class="hotelImg1" src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+        <img class="hotelImg1" *ngIf="checkTierJunior(room.tier)" src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+        <img class="hotelImg1" *ngIf="checkTierExecutive(room.tier)" src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+        <img class="hotelImg1" *ngIf="checkTierPresidential(room.tier)" src="https://images.pexels.com/photos/2290753/pexels-photo-2290753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
       <div class="center">
         <h2>Room number: {{room.roomNum}}</h2>
         <h3>Tier: {{room.tier}}</h3>

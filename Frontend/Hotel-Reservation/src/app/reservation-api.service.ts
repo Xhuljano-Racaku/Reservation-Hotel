@@ -19,6 +19,10 @@ export class ReservationApiService {
     return this.http.get(`${this.baseUrl}customer/${id}`).pipe(catchError(this.handleError))
    }
 
+   findByCustomerPhone(number: string): Observable<any>{
+    return this.http.get(`${this.baseUrl}phone/${number}`).pipe(catchError(this.handleError))
+   }
+
    save(reservation: Reservation): Observable<any>{
     // reservation.startDate = new Date(reservation.startDate.getFullYear(), reservation.startDate.getMonth(), reservation.startDate.getDay());
     // reservation.endDate = new Date(reservation.endDate.getFullYear(), reservation.endDate.getMonth(), reservation.endDate.getDay());

@@ -26,7 +26,11 @@ public class ReservationController {
 
     @GetMapping("{id}")
     public ResponseEntity<Reservation> findById(@PathVariable int id){
-        return new ResponseEntity<Reservation>(service.findById(id),HttpStatus.OK);
+        return new ResponseEntity<Reservation>(service.findById(id), HttpStatus.OK);
+    }
+    @GetMapping("phone/{number}")
+    public ResponseEntity<List<Reservation>> findByPhone(@PathVariable String number){
+        return new ResponseEntity<List<Reservation>>(service.findByPhone(number), HttpStatus.OK);
     }
 
     @PostMapping("")
