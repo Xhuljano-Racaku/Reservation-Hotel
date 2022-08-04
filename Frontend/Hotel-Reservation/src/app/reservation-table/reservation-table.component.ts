@@ -94,12 +94,12 @@ export class ReservationTableComponent implements OnInit {
     console.log(this.selectedReservation)
     this.reservationApiService.update(this.selectedReservation).subscribe(resp => {  
       if(resp != null){
-        this._success.next("Date was succesfully updated");
+
       }
     })
 
     this.editReservationIndex = -1;
-    
+    this._success.next("Date was succesfully updated");
   }
 
 
