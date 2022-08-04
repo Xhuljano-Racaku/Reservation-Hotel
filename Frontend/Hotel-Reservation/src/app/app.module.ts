@@ -20,6 +20,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {CalendarModule} from 'primeng/calendar';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 
 
@@ -33,6 +34,7 @@ import {CalendarModule} from 'primeng/calendar';
     CustomerFormComponent,
     StrictNumberDirective,
     PagenotfoundComponent,
+    ContactFormComponent,
   ],
   imports: [
     BrowserModule,
