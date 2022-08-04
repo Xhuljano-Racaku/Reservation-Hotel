@@ -20,11 +20,17 @@ export class ReservationApiService {
    }
 
    save(reservation: Reservation): Observable<any>{
+    // reservation.startDate = new Date(reservation.startDate.getFullYear(), reservation.startDate.getMonth(), reservation.startDate.getDay());
+    // reservation.endDate = new Date(reservation.endDate.getFullYear(), reservation.endDate.getMonth(), reservation.endDate.getDay());
+     reservation.switchDateToYearFormat()
     return this.http.post(this.baseUrl, reservation).pipe(catchError(this.handleError))
    }
 
    update(reservation: Reservation): Observable<any>{
-    return this.http.put(this.baseUrl, reservation).pipe(catchError(this.handleError))
+     // reservation.startDate = new Date(reservation.startDate.getFullYear(), reservation.startDate.getMonth(), reservation.startDate.getDay());
+     // reservation.endDate = new Date(reservation.endDate.getFullYear(), reservation.endDate.getMonth(), reservation.endDate.getDay());
+     reservation.switchDateToYearFormat()
+     return this.http.put(this.baseUrl, reservation).pipe(catchError(this.handleError))
    }
 
    findByReservationId(id: number): Observable<any>{

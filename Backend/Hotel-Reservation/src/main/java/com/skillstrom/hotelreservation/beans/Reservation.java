@@ -1,5 +1,7 @@
 package com.skillstrom.hotelreservation.beans;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.Future;
 
