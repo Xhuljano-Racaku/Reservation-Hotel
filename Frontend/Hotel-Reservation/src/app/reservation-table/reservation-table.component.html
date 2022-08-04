@@ -1,6 +1,6 @@
 <div class="searchContainer">
-  
-  <ngb-alert #selfClosingAlert *ngIf="successMessage" type="success" (closed)="successMessage =''">{{ successMessage}}
+
+  <ngb-alert id="success" #selfClosingAlert *ngIf="successMessage" type="success" (closed)="successMessage =''">{{ successMessage}}
   </ngb-alert>
   <ngb-alert id="cancel" #selfClosingAlert2 *ngIf="cancelMessage" type="cancel" (closed)="cancelMessage =''">{{ cancelMessage}}
   </ngb-alert>
@@ -15,7 +15,7 @@
     
 </div>
 
-<div>
+<div class="tableContainer">
   <h1>Reservations Table</h1>
   <table class="reservationTable">
     <thead>
