@@ -105,13 +105,15 @@ export class CustomerFormComponent implements OnInit {
         this.reservation = resp;
       },
       err => {
-        
         this._error.next("Conflicting reservation, Can not process reservation");
       },
       () => {
         console.log("here")
         this._success.next("Reservation successfully created");
       })
+    },
+    err => {
+      this._error.next("Unexpected Error");
     });
 
 

@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
-import { Reservation } from './model/Reservation';
+import { Reservation, } from './model/Reservation';
 
 @Injectable({
   providedIn: 'root'
@@ -24,16 +24,48 @@ export class ReservationApiService {
    }
 
    save(reservation: Reservation): Observable<any>{
-    // reservation.startDate = new Date(reservation.startDate.getFullYear(), reservation.startDate.getMonth(), reservation.startDate.getDay());
-    // reservation.endDate = new Date(reservation.endDate.getFullYear(), reservation.endDate.getMonth(), reservation.endDate.getDay());
-     reservation.switchDateToYearFormat()
+
+    var sDate = new Date(reservation.startDate)
+    var eDate = new Date(reservation.endDate)
+
+    var startDateArray = sDate.toLocaleDateString().split("/");
+    var endDateArray = eDate.toLocaleDateString().split("/");
+
+    console.log(startDateArray)
+    console.log(endDateArray)
+
+    var newStartDate = new Date(parseInt(startDateArray[2]),parseInt(startDateArray[0])-1,parseInt(startDateArray[1]));
+    var newEndDate = new Date(parseInt(endDateArray[2]),parseInt(endDateArray[0])-1,parseInt(endDateArray[1]));
+
+    console.log(newStartDate);
+    console.log(newEndDate);
+
+    reservation.startDate = newStartDate;
+    reservation.endDate = newEndDate;
+
     return this.http.post(this.baseUrl, reservation).pipe(catchError(this.handleError))
    }
 
    update(reservation: Reservation): Observable<any>{
-     // reservation.startDate = new Date(reservation.startDate.getFullYear(), reservation.startDate.getMonth(), reservation.startDate.getDay());
-     // reservation.endDate = new Date(reservation.endDate.getFullYear(), reservation.endDate.getMonth(), reservation.endDate.getDay());
-     reservation.switchDateToYearFormat()
+
+      var sDate = new Date(reservation.startDate)
+      var eDate = new Date(reservation.endDate)
+
+      var startDateArray = sDate.toLocaleDateString().split("/");
+      var endDateArray = eDate.toLocaleDateString().split("/");
+
+      console.log(startDateArray)
+      console.log(endDateArray)
+
+      var newStartDate = new Date(parseInt(startDateArray[2]),parseInt(startDateArray[0])-1,parseInt(startDateArray[1]));
+      var newEndDate = new Date(parseInt(endDateArray[2]),parseInt(endDateArray[0])-1,parseInt(endDateArray[1]));
+
+      console.log(newStartDate);
+      console.log(newEndDate);
+
+      reservation.startDate = newStartDate;
+      reservation.endDate = newEndDate;
+
      return this.http.put(this.baseUrl, reservation).pipe(catchError(this.handleError))
    }
 
@@ -51,5 +83,7 @@ export class ReservationApiService {
       throw new Error()
     })
   }
+
+
 }
 

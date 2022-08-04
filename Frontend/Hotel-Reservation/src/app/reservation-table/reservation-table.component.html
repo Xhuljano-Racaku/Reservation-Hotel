@@ -47,7 +47,7 @@
       </td>
       <td>{{reservation.customerId}}</td>
       <td>
-        <div *ngIf="editingReservation && editReservationIndex == i; else notShow3"><button class="submitButton" (click)="updateButton(reservation)">Done</button></div>
+        <div *ngIf="editingReservation && editReservationIndex == i; else notShow3"><button class="submitButton" (click)="updateButton()">Done</button></div>
         <ng-template #notShow3><div><button class="submitButton" (click)="viewButton(i)">Edit</button></div></ng-template>
       </td>
       <td><button class="submitButton" (click)="cancelReservation(reservation.reservationId)">Cancel</button></td>
