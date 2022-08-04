@@ -92,11 +92,12 @@ export class SearchComponent implements OnInit {
 
       console.log("error")
       this._error.next("End date cannot be before or same as start date");
-      this.router.navigate(['/']);
+      this.searchedRooms = [];
     }
 
     else if (this.minPrice > this.maxPrice) {
       this._error.next("Min price can not be bigger than max price");
+      this.searchedRooms = [];
     }
     
     else {

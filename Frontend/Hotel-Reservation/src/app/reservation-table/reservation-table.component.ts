@@ -103,6 +103,7 @@ export class ReservationTableComponent implements OnInit {
       err => {
         console.log("error")
         this._error.next("End date cannot be before or same as start date");
+        window.location.reload();
       },
       () => {
           this._success.next("Date was succesfully updated");
