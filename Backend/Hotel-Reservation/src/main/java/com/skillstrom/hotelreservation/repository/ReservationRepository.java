@@ -21,7 +21,17 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 			+ "OR ?2 BETWEEN start_date AND end_date "
 			+ "OR ?3 BETWEEN start_date AND end_date "
 			+ "OR end_date = ?3)", nativeQuery = true)
-	Reservation findReservation(int roomNum, String startDate, String endDate, int customer_id);
+	Reservation findConflictingReservations(int roomNum, String startDate, String endDate, int customer_id);
+	
+	@Query(value = "SELECT * "
+			+ "FROM reservation "
+			+ "WHERE room_num = ?1 "
+			+ "AND(start_date = ?2 "
+			+ "OR ?2 BETWEEN start_date AND end_date "
+			+ "OR ?3 BETWEEN start_date AND end_date "
+			+ "OR end_date = ?3)"
+			+ "AND customer_id != ?4 ", nativeQuery = true)
+	Reservation findOtherConflictingReservations(int roomNum, String startDate, String endDate, int customer_id);
 	
 	@Query(value = "SELECT reservation_id, room_num, start_date, end_date, reservation.customer_id "
 			+ "FROM reservation LEFT JOIN customer on reservation.customer_id = customer.customer_id "

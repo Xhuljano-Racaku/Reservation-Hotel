@@ -32,7 +32,7 @@ public class ReservationService {
 
     public Reservation save (Reservation reservation){
     	
-    	Reservation test = repository.findReservation(reservation.getRoomNum(), reservation.getStartDate().toString(), reservation.getEndDate().toString(), reservation.getCustomerId());
+    	Reservation test = repository.findConflictingReservations(reservation.getRoomNum(), reservation.getStartDate().toString(), reservation.getEndDate().toString(), reservation.getCustomerId());
     	
     	if(reservation.getEndDate().isBefore(reservation.getStartDate())) {
     		System.out.println("End date cannot be before start date");
@@ -49,7 +49,7 @@ public class ReservationService {
 
     public Reservation update(Reservation reservation){
     	
-    	Reservation test = repository.findReservation(reservation.getRoomNum(), reservation.getStartDate().toString(), reservation.getEndDate().toString(), reservation.getCustomerId());
+    	Reservation test = repository.findOtherConflictingReservations(reservation.getRoomNum(), reservation.getStartDate().toString(), reservation.getEndDate().toString(), reservation.getCustomerId());
     	
     	if(reservation.getEndDate().isBefore(reservation.getStartDate())) {
     		System.out.println("End date cannot be before start date");
