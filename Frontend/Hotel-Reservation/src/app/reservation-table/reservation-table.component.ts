@@ -97,7 +97,7 @@ export class ReservationTableComponent implements OnInit {
 
   }
 
-  updateButton(reservation :Reservation){
+  updateButton(){
     this.editingReservation = false;
     console.log(this.selectedReservation)
     this.reservationApiService.update(this.selectedReservation).subscribe(resp => { },

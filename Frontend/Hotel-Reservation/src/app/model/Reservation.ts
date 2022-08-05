@@ -17,29 +17,29 @@ export class Reservation{
     this.customerId = customerId;
   }
 
-  switchDateToYearFormat(){
-    // var startDateArray = this.startDate.toLocaleDateString().split("-")
-    var sDate = new Date(this.startDate)
-    var eDate = new Date(this.endDate)
+  // switchDateToYearFormat(){
+  //   // var startDateArray = this.startDate.toLocaleDateString().split("-")
+  //   var sDate = new Date(this.startDate)
+  //   var eDate = new Date(this.endDate)
 
-    var startDateArray = sDate.toLocaleDateString().split("/");
-    var endDateArray = eDate.toLocaleDateString().split("/");
+  //   var startDateArray = sDate.toLocaleDateString().split("/");
+  //   var endDateArray = eDate.toLocaleDateString().split("/");
 
-    console.log(startDateArray)
-    console.log(endDateArray)
+  //   console.log(startDateArray)
+  //   console.log(endDateArray)
 
-    var newStartDate = new Date(parseInt(startDateArray[2]),parseInt(startDateArray[0])-1,parseInt(startDateArray[1]));
-    var newEndDate = new Date(parseInt(endDateArray[2]),parseInt(endDateArray[0])-1,parseInt(endDateArray[1]));
+  //   var newStartDate = new Date(parseInt(startDateArray[2]),parseInt(startDateArray[0])-1,parseInt(startDateArray[1]));
+  //   var newEndDate = new Date(parseInt(endDateArray[2]),parseInt(endDateArray[0])-1,parseInt(endDateArray[1]));
 
-    console.log(newStartDate);
-    console.log(newEndDate);
+  //   console.log(newStartDate);
+  //   console.log(newEndDate);
 
-    this.startDate = newStartDate;
-    this.endDate = newEndDate;
+  //   this.startDate = newStartDate;
+  //   this.endDate = newEndDate;
 
 
 
-    // this.startDate = new Date(parseInt(startDateArray[2])),parseInt(startDateArray[0]),parseInt(startDateArray[1]);
-    // this.endDate = new Date(parseInt(endDateArray[2])),parseInt(endDateArray[0]),parseInt(endDateArray[1]);
-  }
+  //   // this.startDate = new Date(parseInt(startDateArray[2])),parseInt(startDateArray[0]),parseInt(startDateArray[1]);
+  //   // this.endDate = new Date(parseInt(endDateArray[2])),parseInt(endDateArray[0]),parseInt(endDateArray[1]);
+  // }
 }
