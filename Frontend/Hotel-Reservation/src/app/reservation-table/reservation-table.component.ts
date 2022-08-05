@@ -34,7 +34,7 @@ export class ReservationTableComponent implements OnInit {
 
   reservationApiService :ReservationApiService;
   reservations :Array<Reservation> = [];
-  
+
   number: number = 0
   router: any;
 
@@ -97,6 +97,7 @@ export class ReservationTableComponent implements OnInit {
     this.editReservationIndex = index;
     this.selectedReservation = this.reservations[index]
     console.log(this.selectedReservation)
+
   }
 
   updateButton(){
@@ -111,6 +112,4 @@ export class ReservationTableComponent implements OnInit {
           this._success.next("Date was succesfully updated");
          })
   }
-
-
 }
