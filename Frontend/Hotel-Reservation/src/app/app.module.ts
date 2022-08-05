@@ -21,8 +21,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {CalendarModule} from 'primeng/calendar';
 import { ContactFormComponent } from './contact-form/contact-form.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
@@ -50,9 +48,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     DropdownModule,
     BrowserAnimationsModule,
     InputNumberModule,
-    CalendarModule,
-    MatDatepickerModule,
-    MatFormFieldModule
+    CalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
