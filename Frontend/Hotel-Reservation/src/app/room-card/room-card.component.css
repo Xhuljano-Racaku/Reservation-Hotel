@@ -67,3 +67,8 @@ img {
   cursor: pointer;
   color: rgb(255, 254, 254);
 }
+
+
+h3{
+  text-transform: capitalize;
+}
