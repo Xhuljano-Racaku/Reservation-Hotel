@@ -35,7 +35,7 @@
       <td>{{reservation.roomNum}}</td>
       <td>
         <div *ngIf="editingReservation && editReservationIndex == i; else notShow">
-          <p-calendar [(ngModel)]="reservation.startDate" dataType="string" dateFormat="mm-dd-yy" appendTo="body"></p-calendar>
+          <p-calendar [(ngModel)]="reservation.startDate" dataType="string" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
         </div>
         <ng-template #notShow><div>{{reservation.startDate | date}}</div></ng-template>
       </td>
