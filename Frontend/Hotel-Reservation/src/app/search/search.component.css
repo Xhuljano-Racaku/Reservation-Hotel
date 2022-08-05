@@ -16,6 +16,10 @@ input{
   align-items: center;
 }
 
+.header{
+  padding-bottom: 10px;
+}
+
 .roomSection{
   display: flex;
   flex-direction: column;

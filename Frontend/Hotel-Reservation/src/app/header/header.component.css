@@ -19,6 +19,7 @@ header{
 
 .nav_links{
   list-style: none;
+  padding-top: 15px;
 }
 
 .nav_links li{
