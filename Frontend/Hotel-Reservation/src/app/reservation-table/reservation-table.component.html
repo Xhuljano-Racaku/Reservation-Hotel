@@ -36,14 +36,14 @@
       <td>
         <div *ngIf="editingReservation && editReservationIndex == i; else notShow">
 
-          <p-calendar [(ngModel)]="reservation.startDate" dataType="string" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+          <p-calendar [(ngModel)]="reservation.startDate" dataType="string" dateFormat="yy-mm-dd" appendTo="body" [minDate]="currentDate"></p-calendar>
 
         </div>
         <ng-template #notShow><div>{{reservation.startDate | date}}</div></ng-template>
       </td>
       <td>
         <div *ngIf="editingReservation && editReservationIndex == i; else notShow2">
-          <p-calendar [(ngModel)]="reservation.endDate" dataType="string" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+          <p-calendar [(ngModel)]="reservation.endDate" dataType="string" dateFormat="yy-mm-dd" appendTo="body" [minDate]="currentDate"></p-calendar>
         </div>
         <ng-template #notShow2><div>{{reservation.endDate | date}}</div></ng-template>
       </td>

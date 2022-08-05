@@ -3,7 +3,7 @@ import { Room } from '../model/Room';
 import { RoomApiService } from '../room-api.service';
 import {forkJoin, Subject} from "rxjs";
 import { AppComponent } from '../app.component';
-import { compareAsc, format } from 'date-fns'
+import { compareAsc, format, min } from 'date-fns'
 import { debounceTime } from 'rxjs';
 import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
@@ -26,6 +26,7 @@ export class SearchComponent implements OnInit {
   numberOfBeds!: number;
   minPrice!: number
   maxPrice!: number
+  currentDate :any = new Date();
 
   roomOptions : any[] = []
   tierOptions: any[] = []

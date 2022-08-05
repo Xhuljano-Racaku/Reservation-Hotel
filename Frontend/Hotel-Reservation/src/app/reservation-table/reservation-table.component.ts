@@ -37,6 +37,7 @@ export class ReservationTableComponent implements OnInit {
 
   number: number = 0
   router: any;
+  currentDate: any = new Date();
 
   constructor(reservationApiService :ReservationApiService) {
     this.reservationApiService = reservationApiService;
