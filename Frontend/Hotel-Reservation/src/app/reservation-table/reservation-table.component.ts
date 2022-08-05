@@ -94,7 +94,6 @@ export class ReservationTableComponent implements OnInit {
     this.editReservationIndex = index;
     this.selectedReservation = this.reservations[index]
     console.log(this.selectedReservation)
-
   }
 
   updateButton(){

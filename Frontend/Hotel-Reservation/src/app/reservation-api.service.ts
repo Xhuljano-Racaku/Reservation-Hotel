@@ -47,25 +47,6 @@ export class ReservationApiService {
    }
 
    update(reservation: Reservation): Observable<any>{
-
-      var sDate = new Date(reservation.startDate)
-      var eDate = new Date(reservation.endDate)
-
-      var startDateArray = sDate.toLocaleDateString().split("/");
-      var endDateArray = eDate.toLocaleDateString().split("/");
-
-      console.log(startDateArray)
-      console.log(endDateArray)
-
-      var newStartDate = new Date(parseInt(startDateArray[2]),parseInt(startDateArray[0])-1,parseInt(startDateArray[1]));
-      var newEndDate = new Date(parseInt(endDateArray[2]),parseInt(endDateArray[0])-1,parseInt(endDateArray[1]));
-
-      console.log(newStartDate);
-      console.log(newEndDate);
-
-      reservation.startDate = newStartDate;
-      reservation.endDate = newEndDate;
-
      return this.http.put(this.baseUrl, reservation).pipe(catchError(this.handleError))
    }
 
