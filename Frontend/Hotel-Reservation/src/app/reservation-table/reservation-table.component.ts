@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
+import { format } from 'date-fns';
 import { debounceTime, Subject } from 'rxjs';
 import {Reservation} from "../model/Reservation";
 import {ReservationApiService} from "../reservation-api.service";
@@ -39,6 +40,8 @@ export class ReservationTableComponent implements OnInit {
 
   constructor(reservationApiService :ReservationApiService) {
     this.reservationApiService = reservationApiService;
+
+    
   }
 
   ngOnInit(): void {

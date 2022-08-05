@@ -90,12 +90,21 @@ export class CustomerFormComponent implements OnInit {
     // Save the customer so we can generate the customer ID
     // We need to have a way to get customer ID of already existing customer
     this.service.save(this.submitForm.value).subscribe(resp => {
+      
       this.customer = resp
+      
       this.submitForm.reset();
 
       // set the reservation customerid to the generated customer id
-      this.reservation.customerId = this.customer.customerId
-
+      try {
+        this.reservation.customerId = this.customer.customerId
+      } catch (error) {
+        this._error.next("Please select a different reservation, redirecting to home page...");
+        setTimeout(function() {
+          window.location.href = '';
+        }, 2000);
+      }
+      
       // set the rest of the reservation data from the data passed by room card
       this.reservation.roomNum = this.roomNum
       this.reservation.startDate = this.startDate
@@ -105,7 +114,10 @@ export class CustomerFormComponent implements OnInit {
         this.reservation = resp;
       },
       err => {
-        this._error.next("Conflicting reservation, Can not process reservation");
+        this._error.next("Conflicting reservation, Can not process reservation. Redirecting to home page...");
+        setTimeout(function() {
+          window.location.href = '';
+        }, 2000);
       },
       () => {
         console.log("here")
