@@ -9,7 +9,7 @@ import { Reservation, } from './model/Reservation';
 export class ReservationApiService {
 
   http: HttpClient
-  baseUrl: string = "http://localhost:8080/reservation/"
+  baseUrl: string = "http://hotelreservation-env.eba-jacmpycn.us-east-2.elasticbeanstalk.com/reservation/"
 
   constructor(http: HttpClient) {
     this.http = http
