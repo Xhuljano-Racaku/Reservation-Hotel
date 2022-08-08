@@ -1,17 +1,20 @@
 package com.skillstrom.hotelreservation.controller;
 
-import com.skillstrom.hotelreservation.beans.Reservation;
-import com.skillstrom.hotelreservation.services.ReservationService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.skillstrom.hotelreservation.beans.Reservation;
+import com.skillstrom.hotelreservation.services.ReservationService;
+
 import java.util.List;
 
 import javax.validation.Valid;
 
-@CrossOrigin(origins="http://localhost:4200")
+//@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="http://hotel-reservation.s3-website.us-east-2.amazonaws.com")
 @RestController
 @RequestMapping("/reservation/")
 public class ReservationController {

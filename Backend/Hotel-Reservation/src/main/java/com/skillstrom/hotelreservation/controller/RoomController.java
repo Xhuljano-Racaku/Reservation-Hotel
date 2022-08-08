@@ -17,7 +17,8 @@ import com.skillstrom.hotelreservation.services.RoomService;
 
 @RestController
 @RequestMapping("/rooms")
-@CrossOrigin(origins="http://localhost:4200")
+//@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="http://hotel-reservation.s3-website.us-east-2.amazonaws.com")
 public class RoomController {
 
 	@Autowired
