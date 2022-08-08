@@ -8,6 +8,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 export class RoomApiService {
 
   http: HttpClient
+  // baseUrl: string ="http://localhost:8080/rooms"
   baseUrl: string = "http://hotelreservation-env.eba-jacmpycn.us-east-2.elasticbeanstalk.com/rooms"
 
   constructor(http: HttpClient) {
